@@ -323,7 +323,7 @@ internal sealed class TrainerSession : IDisposable
             IReadOnlyList<MetadataOption> options = _metadataCatalog.TryGetValue(field.Key, out List<MetadataOption>? known) ? known : [];
             try
             {
-                result.Add(new AdvancedOperativeField { Key = field.Key, DisplayName = field.DisplayName, Value = FormatHex(remote.ReadBytes(ResolveAdvancedAddress(remote, npcData, field), field.Length)), Risk = "HIGH RISK", Description = field.Description, Options = options });
+                result.Add(new AdvancedOperativeField { Key = field.Key, DisplayName = field.DisplayName, Value = Convert.ToHexString(remote.ReadBytes(ResolveAdvancedAddress(remote, npcData, field), field.Length)), Risk = "HIGH RISK", Description = field.Description, Options = options });
             }
             catch (Exception ex)
             {
