@@ -1,0 +1,2986 @@
+[
+  {
+    "code": "00000000",
+    "internalName": "&lt;Empty&gt;",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B6083155",
+    "internalName": "Passive_FastTransfer",
+    "displayName": "6G Data Plan",
+    "shortDescription": "Fast Downloads",
+    "longDescription": "Increase download speed of data transfers",
+    "classification": 1
+  },
+  {
+    "code": "B6983567",
+    "internalName": "Ability_SpyCar_Rockets",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "DDBAD593",
+    "internalName": "Aiden_AllDLCWeapons",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "40E8EDEE",
+    "internalName": "WeaponCombo_AidenWeapons_MainGame",
+    "displayName": "Aiden's Arsenal",
+    "shortDescription": "Versatile weapon combination",
+    "longDescription": "An arsenal gathered for a previous operation in London",
+    "classification": 1
+  },
+  {
+    "code": "A39D965B",
+    "internalName": "Weapon_AssaultRifle_AK47",
+    "displayName": "AK47",
+    "shortDescription": "Full-Auto Rifle",
+    "longDescription": "A full-auto rifle with high damage and high recoil",
+    "classification": 1
+  },
+  {
+    "code": "C8334640",
+    "internalName": "Twist_WantedAlbion",
+    "displayName": "Albion Target",
+    "shortDescription": "Albion Becomes Aggressive",
+    "longDescription": "Albion guards will attack upon detection anywhere in London",
+    "classification": 0
+  },
+  {
+    "code": "E0FEFAA2",
+    "internalName": "Passive_AlbionVendetta",
+    "displayName": "Albion Vendetta",
+    "shortDescription": "Extra Faction Damage",
+    "longDescription": "Deal increased damage against Albion personnel",
+    "classification": 1
+  },
+  {
+    "code": "8E9F5ED0",
+    "internalName": "Passive_ChaseDroneImmunity",
+    "displayName": "Anti-Chase",
+    "shortDescription": "Chase Drone Immunity",
+    "longDescription": "Immune to Chase Drones while driving",
+    "classification": 1
+  },
+  {
+    "code": "8EB12630",
+    "internalName": "Passive_Exotic_BeeSuit",
+    "displayName": "Anti-Shock Suit",
+    "shortDescription": "Shock Immunity",
+    "longDescription": "Immune to all sources of shock damage",
+    "classification": 1
+  },
+  {
+    "code": "DB52FCD7",
+    "internalName": "Weapon_Launcher_M052",
+    "displayName": "APGL",
+    "shortDescription": "Grenade Launcher",
+    "longDescription": "A short-range grenade launcher that fires frag grenades",
+    "classification": 1
+  },
+  {
+    "code": "D11AC3C7",
+    "internalName": "Gadget_DarcyAccess",
+    "displayName": "AR Disguise",
+    "shortDescription": "Stealth Ability",
+    "longDescription": "Assume the look of a soldier with access to restricted locations. Also affects nearby allies in multiplayer",
+    "classification": 1
+  },
+  {
+    "code": "6644772D",
+    "internalName": "Gadget_AbsorptionShield",
+    "displayName": "AR Medical Shield",
+    "shortDescription": "Active diagnostic limits damage",
+    "longDescription": "Deploy shield to self or ally to absorb damage",
+    "classification": 1
+  },
+  {
+    "code": "80254744",
+    "internalName": "Passive_Darcy_StealthTimer",
+    "displayName": "Assassin Training",
+    "shortDescription": "Improved Stealth",
+    "longDescription": "Avoid detection for longer while in stealth, and double-tap [COMBATROLL] to perform combat rolls",
+    "classification": 1
+  },
+  {
+    "code": "7DE65974",
+    "internalName": "Passive_AutoArrestReleaseTeam",
+    "displayName": "Bail Out",
+    "shortDescription": "Team Arrest Release",
+    "longDescription": "Occasionally auto releases an arrested teammate",
+    "classification": 1
+  },
+  {
+    "code": "996FEAB0",
+    "internalName": "Passive_GasImmunity",
+    "displayName": "Bandana",
+    "shortDescription": "Gas Immunity",
+    "longDescription": "Immune to all types of gas damage",
+    "classification": 1
+  },
+  {
+    "code": "C6E8017F",
+    "internalName": "Emote_Banjo",
+    "displayName": "Banjo",
+    "shortDescription": "Perform Music",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "EB2479DF",
+    "internalName": "MeleeWeapon_Baton",
+    "displayName": "Baton",
+    "shortDescription": "Light Melee Weapon",
+    "longDescription": "Fast, quick hitting melee strikes. Damages through block",
+    "classification": 1
+  },
+  {
+    "code": "EAB98BC9",
+    "internalName": "Emote_Beatboxing",
+    "displayName": "Beatboxer",
+    "shortDescription": "Perform Music",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "7F445439",
+    "internalName": "Gadget_Exotic_BeeSwarm",
+    "displayName": "Bee Swarm",
+    "shortDescription": "Damage Enemies",
+    "longDescription": "Select multiple targets to swarm with robotic bees",
+    "classification": 1
+  },
+  {
+    "code": "3D383F25",
+    "internalName": "Emote_BeerChug_Hidden",
+    "displayName": "Beer Chug",
+    "shortDescription": "Down a pint and become drunk",
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "1D4D10C5",
+    "internalName": "Twist_SecondWind",
+    "displayName": "Berserker",
+    "shortDescription": "Defeat Enemies to Heal",
+    "longDescription": "Defeating enemies starts health regeneration",
+    "classification": 1
+  },
+  {
+    "code": "7AA37EFC",
+    "internalName": "Passive_Bouncer",
+    "displayName": "Bouncer",
+    "shortDescription": "Damage Stunned Targets",
+    "longDescription": "Deal increased damage to stunned or staggered enemies",
+    "classification": 1
+  },
+  {
+    "code": "F4E87C13",
+    "internalName": "Gadget_BullRush",
+    "displayName": "Bull Rush",
+    "shortDescription": "Tackle Enemies",
+    "longDescription": "Charge and perform explosive tackle while resisting damage",
+    "classification": 1
+  },
+  {
+    "code": "4207B70D",
+    "internalName": "Gadget_DroneSummon_ConstructionDrone",
+    "displayName": "Cargo Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a personal, ridable Cargo Drone",
+    "classification": 1
+  },
+  {
+    "code": "D864EBE6",
+    "internalName": "Trigger_Vehicle_FelonyAssist",
+    "displayName": "Clear The Way",
+    "shortDescription": "Hack Vehicles Aside",
+    "longDescription": "Hacks nearby cars and chase drones",
+    "classification": 1
+  },
+  {
+    "code": "B55D70E7",
+    "internalName": "Passive_Combat Roll",
+    "displayName": "Combat Roll",
+    "shortDescription": "Evasive Dodge",
+    "longDescription": "Perform a combat roll by double-tapping [COMBATROLL]. Auto-reloads weapon.",
+    "classification": 1
+  },
+  {
+    "code": "6434A2F1",
+    "internalName": "Twist_Stuntman",
+    "displayName": "Crash Dummy",
+    "shortDescription": "Reduced Damage from Impact",
+    "longDescription": "Falls, explosions, and collisions with vehicles deal less damage",
+    "classification": 1
+  },
+  {
+    "code": "04FFF863",
+    "internalName": "MeleeWeapon_Crowbar",
+    "displayName": "Crowbar",
+    "shortDescription": "Light Melee Weapon",
+    "longDescription": "Fast, quick hitting melee strikes. Damages through block",
+    "classification": 1
+  },
+  {
+    "code": "BA4AA893",
+    "internalName": "Passive_SiphonCryptoHacks",
+    "displayName": "Crypto Skimmer",
+    "shortDescription": "Hacks Steal ETO",
+    "longDescription": "Occasionally gain ETO when hacking",
+    "classification": 1
+  },
+  {
+    "code": "D2CC5B69",
+    "internalName": "Gadget_DroneSummon_WiFlyDrone",
+    "displayName": "ctOS Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a personal ctOS Drone",
+    "classification": 1
+  },
+  {
+    "code": "2280D1F2",
+    "internalName": "Weapon_Aiden_Revolver",
+    "displayName": "Custom .357",
+    "shortDescription": "Magnum revolver modified for better handling and intimidation",
+    "longDescription": "High damage and accuracy",
+    "classification": 1
+  },
+  {
+    "code": "AC843568",
+    "internalName": "Emote_Dancing",
+    "displayName": "Dancer",
+    "shortDescription": "Perform",
+    "longDescription": "Perform for an audience",
+    "classification": null
+  },
+  {
+    "code": "FA0FB239",
+    "internalName": "Passive_CanDie",
+    "displayName": "Death Wish",
+    "shortDescription": "May Die Permanently",
+    "longDescription": "May die permanently instead of being arrested or injured",
+    "classification": 0
+  },
+  {
+    "code": "8386D441",
+    "internalName": "Weapon_Sidearm_DesertEagle",
+    "displayName": "Desert Eagle",
+    "shortDescription": "Semi-Auto Pistol",
+    "longDescription": "A semi-auto pistol with high damage and high recoil",
+    "classification": 1
+  },
+  {
+    "code": "5A4EB9B0",
+    "internalName": "WeaponCombo_DE_and_Launcher",
+    "displayName": "Desert Eagle + APGL",
+    "shortDescription": "Weapon Arsenal",
+    "longDescription": "Comes with a Desert Eagle and an APGL Grenade Launcher",
+    "classification": 1
+  },
+  {
+    "code": "FDDB2E13",
+    "internalName": "WeaponCombo_G36_and_DE",
+    "displayName": "Desert Eagle + G36",
+    "shortDescription": "Weapon Arsenal",
+    "longDescription": "Comes with a Desert Eagle and a G36 Assault Rifle",
+    "classification": 1
+  },
+  {
+    "code": "238A371C",
+    "internalName": "Gadget_Exotic_DroneStorm",
+    "displayName": "Dive Bomb",
+    "shortDescription": "Homing Drones",
+    "longDescription": "Select an enemy to be divebombed by a drone",
+    "classification": 1
+  },
+  {
+    "code": "CC4B2BCB",
+    "internalName": "Passive_DieRandomly",
+    "displayName": "Doomed",
+    "shortDescription": "Spontaneous Death",
+    "longDescription": "May die permanently at any moment",
+    "classification": 0
+  },
+  {
+    "code": "64F77638",
+    "internalName": "Passive_DroneBypass",
+    "displayName": "Drone Betray Hack",
+    "shortDescription": "Gain Drone Allegiance",
+    "longDescription": "Can use the Betray hack, briefly making a drone an ally",
+    "classification": 1
+  },
+  {
+    "code": "04475466",
+    "internalName": "Weapon_Exotic_DroneDisruptor",
+    "displayName": "Drone Disruptor",
+    "shortDescription": "Drone Destroying Weapon",
+    "longDescription": "Fires disrupting waves of energy that damage and stun drones",
+    "classification": 1
+  },
+  {
+    "code": "10B1181D",
+    "internalName": "Passive_DroneShock",
+    "displayName": "Drone Shock",
+    "shortDescription": "Damage and Stun Drones",
+    "longDescription": "Can use a hack that damages and stuns drones",
+    "classification": 1
+  },
+  {
+    "code": "5242EEF4",
+    "internalName": "Gadget_DroneSummon_DarcyDrone",
+    "displayName": "Eagle Drone",
+    "shortDescription": "Stealth Drone",
+    "longDescription": "A scout drone that can self-destruct and emit a short-range EMP",
+    "classification": 1
+  },
+  {
+    "code": "65EAF69A",
+    "internalName": "Gadget_AlbionCloak",
+    "displayName": "Elite Combat Cloak",
+    "shortDescription": "Brief Invisibility",
+    "longDescription": "A short-duration cloak that can be used even while shooting",
+    "classification": 1
+  },
+  {
+    "code": "028BBE0D",
+    "internalName": "Gadget_KamikazeDrone",
+    "displayName": "Elite Kamikaze Drone",
+    "shortDescription": "Homing Bomb",
+    "longDescription": "Deploys a drone that crashes into a target and explodes",
+    "classification": 1
+  },
+  {
+    "code": "01A933FB",
+    "internalName": "Gadget_SeekerSpider",
+    "displayName": "Elite Seeker Spider",
+    "shortDescription": "Homing Bomb",
+    "longDescription": "Deploys a homing spider that explodes near enemies",
+    "classification": 1
+  },
+  {
+    "code": "B8B8618C",
+    "internalName": "Gadget_SpiderTurret",
+    "displayName": "Elite Turret Spider",
+    "shortDescription": "Fires At Enemies",
+    "longDescription": "Deploys an immobile lethal spider turret",
+    "classification": 1
+  },
+  {
+    "code": "0DE9FF3D",
+    "internalName": "Emote_Bareknuckle",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6FAD4576",
+    "internalName": "Emote_FlaskDrink_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "64BB35DF",
+    "internalName": "Emote_LowMobilityDance",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "CAD9EFE7",
+    "internalName": "Emote_Megaphone",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "C420F1FF",
+    "internalName": "Emote_SurfaceTag_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "C61BF7D4",
+    "internalName": "Gadget_OptikDeviceRadar",
+    "displayName": "Enhanced Radar",
+    "shortDescription": "See Enemies Through Walls",
+    "longDescription": "Scan to see enemies highlighted through walls",
+    "classification": 1
+  },
+  {
+    "code": "C71520EB",
+    "internalName": "Passive_FasterFelonyEscapeVehicle",
+    "displayName": "Evasive Driving",
+    "shortDescription": "Escape Pursuit Faster",
+    "longDescription": "Escape Pursuit Level faster when driving",
+    "classification": 1
+  },
+  {
+    "code": "539C687E",
+    "internalName": "Exotic_SpyCarCloak",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0E873C67",
+    "internalName": "Passive_DamageResistExplosion",
+    "displayName": "Explosive Shield",
+    "shortDescription": "Take Less Damage",
+    "longDescription": "Significantly reduce damage taken from explosions",
+    "classification": 1
+  },
+  {
+    "code": "D200C4EE",
+    "internalName": "Passive_Celebrity",
+    "displayName": "Famous",
+    "shortDescription": "Noticed in Public",
+    "longDescription": "May be noticed by fans and news drones",
+    "classification": 1
+  },
+  {
+    "code": "B78CF07E",
+    "internalName": "Passive_FastHack",
+    "displayName": "Fast Hacking",
+    "shortDescription": "Short Hack Cooldowns",
+    "longDescription": "All hacks have significantly shorter cooldowns",
+    "classification": 1
+  },
+  {
+    "code": "B1CC398B",
+    "internalName": "Gadget_AudioShockwave",
+    "displayName": "Feedback Loop",
+    "shortDescription": "Stun Nearby Enemies",
+    "longDescription": "Temporarily stun nearby enemies and civilians",
+    "classification": 1
+  },
+  {
+    "code": "97510A2D",
+    "internalName": "FightingStyle_Brawler",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E9822A75",
+    "internalName": "FightingStyle_Technician",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "76C601D3",
+    "internalName": "Passive_Brawler",
+    "displayName": "Fists of Fury",
+    "shortDescription": "Damage Up Each Hit",
+    "longDescription": "Damage increases with each consecutive melee attack",
+    "classification": 1
+  },
+  {
+    "code": "8C0C9694",
+    "internalName": "Passive_Flatulant",
+    "displayName": "Flatulent",
+    "shortDescription": "Alert Nearby Enemies",
+    "longDescription": "Occasionally passes gas, may alert nearby enemies",
+    "classification": 0
+  },
+  {
+    "code": "3D65EB67",
+    "internalName": "Aiden_Gunkata",
+    "displayName": "Focus",
+    "shortDescription": "Slowmo aiming after takedown",
+    "longDescription": "Aim after a weapon takedown to slow time",
+    "classification": 1
+  },
+  {
+    "code": "DE650F53",
+    "internalName": "Passive_LowHealth",
+    "displayName": "Frail",
+    "shortDescription": "Take More Damage",
+    "longDescription": "Increase damage taken from all sources",
+    "classification": 0
+  },
+  {
+    "code": "2399B113",
+    "internalName": "Weapon_AssaultRifle_G36",
+    "displayName": "G36",
+    "shortDescription": "Full-Auto Rifle",
+    "longDescription": "A full-auto rifle with high accuracy and low recoil",
+    "classification": 1
+  },
+  {
+    "code": "E51A3702",
+    "internalName": "Gadget_CarAttack",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "1112AEA9",
+    "internalName": "Gadget_EndMindControl",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "038B14ED",
+    "internalName": "Passive_Gambler",
+    "displayName": "Gambling Addict",
+    "shortDescription": "Randomly Gambles ETO",
+    "longDescription": "Occasionally gambles with ETO. May win, may lose",
+    "classification": 0
+  },
+  {
+    "code": "CF3746D8",
+    "internalName": "Weapon_Launcher_G106",
+    "displayName": "GL-06",
+    "shortDescription": "Grenade Launcher",
+    "longDescription": "A long-range grenade launcher that fires frag grenades",
+    "classification": 1
+  },
+  {
+    "code": "769A4636",
+    "internalName": "Passive_BrittleAggressor",
+    "displayName": "Glass Cannon",
+    "shortDescription": "Take/Deal More Damage",
+    "longDescription": "Increase both damage dealt and damage taken",
+    "classification": 0
+  },
+  {
+    "code": "848918F3",
+    "internalName": "Passive_ReducedInjuryTimeSelf",
+    "displayName": "Good Patient",
+    "shortDescription": "Shorter Injury Time",
+    "longDescription": "Spend less time in hospital when injured",
+    "classification": 1
+  },
+  {
+    "code": "B6381E9E",
+    "internalName": "Trigger_GPSSpoof",
+    "displayName": "GPS Spoofing",
+    "shortDescription": "Slows down drones",
+    "longDescription": "Activate to slow down all nearby enemy drones",
+    "classification": 1
+  },
+  {
+    "code": "B610A102",
+    "internalName": "Passive_Wrestler",
+    "displayName": "Grappler",
+    "shortDescription": "Guard Break Damage Up",
+    "longDescription": "Deal increased damage with guard break melee attacks",
+    "classification": 1
+  },
+  {
+    "code": "7C34408D",
+    "internalName": "Emote_Guitar",
+    "displayName": "Guitar",
+    "shortDescription": "Perform Music",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "7EDB90A7",
+    "internalName": "Passive_Gunkata",
+    "displayName": "Gunkata",
+    "shortDescription": "Instant Gun Takedowns",
+    "longDescription": "Execute instant gun takedowns, even on aware enemies",
+    "classification": 1
+  },
+  {
+    "code": "253D4EC5",
+    "internalName": "ActiveRelaod",
+    "displayName": "Gunslinger",
+    "shortDescription": "Well timed reload buffs damage",
+    "longDescription": "Press reload button while reloading for damage buff",
+    "classification": 1
+  },
+  {
+    "code": "16742277",
+    "internalName": "MeleeWeapon_Hammer",
+    "displayName": "Hammer",
+    "shortDescription": "Heavy Melee Weapon",
+    "longDescription": "Slow, hard hitting melee strikes. Damages through block",
+    "classification": 1
+  },
+  {
+    "code": "B5A5E5C6",
+    "internalName": "Passive_HardDrinker",
+    "displayName": "Hard Drinker",
+    "shortDescription": "Extra Melee Damage",
+    "longDescription": "Deal increased melee damage when drunk",
+    "classification": 0
+  },
+  {
+    "code": "37B54E29",
+    "internalName": "Emote_Harmonica",
+    "displayName": "Harmonica",
+    "shortDescription": "Perform Music",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "4D597110",
+    "internalName": "Passive_Hiccups",
+    "displayName": "Hiccups",
+    "shortDescription": "Alert Nearby Enemies",
+    "longDescription": "Occasionally hiccups, may alert nearby enemies",
+    "classification": 0
+  },
+  {
+    "code": "21F1BCA4",
+    "internalName": "Darcy_Combo_WeaponsAndBlade",
+    "displayName": "Hidden Weapons",
+    "shortDescription": "Unique Weapon Arsenal",
+    "longDescription": "An array of stealth-based weapons including a gun, dart gun, and blade",
+    "classification": null
+  },
+  {
+    "code": "9E7AD6CC",
+    "internalName": "MeleeWeapon_Rescue_Tool",
+    "displayName": "Hydraulic Rescue Tool",
+    "shortDescription": "Heavy Melee Weapon",
+    "longDescription": "Perform powerful melee takedowns",
+    "classification": 1
+  },
+  {
+    "code": "9BBC6713",
+    "internalName": "Passive_SuckerPunch",
+    "displayName": "K.O. Punch",
+    "shortDescription": "Fast Knockouts",
+    "longDescription": "Enemies are KO'd without needing finishing move",
+    "classification": 1
+  },
+  {
+    "code": "5FF88B4F",
+    "internalName": "Twist_WantedKelly",
+    "displayName": "Kelley Target",
+    "shortDescription": "Clan Kelley Becomes Aggressive",
+    "longDescription": "Clan Kelley members will attack upon detection anywhere in London",
+    "classification": 0
+  },
+  {
+    "code": "7EC0B70D",
+    "internalName": "Passive_ClanKelleyVendetta",
+    "displayName": "Kelley Vendetta",
+    "shortDescription": "Extra Faction Damage",
+    "longDescription": "Deal increased damage to Clan Kelley members",
+    "classification": 1
+  },
+  {
+    "code": "5B2E512F",
+    "internalName": "Passive_SecurityBypass",
+    "displayName": "Key Steal",
+    "shortDescription": "Unlimited Range",
+    "longDescription": "Access Keys can be stolen from any distance",
+    "classification": 1
+  },
+  {
+    "code": "BE5E3A2B",
+    "internalName": "Ability_StreetPerformance",
+    "displayName": "Killer Beat",
+    "shortDescription": "Short Cooldowns and More Damage",
+    "longDescription": "Boost team's ability cooldowns and damage",
+    "classification": 1
+  },
+  {
+    "code": "E0E976A9",
+    "internalName": "Passive_KineticCharger",
+    "displayName": "Kinetic Charger",
+    "shortDescription": "Melee Charges Gadgets",
+    "longDescription": "Each melee hit reduces cooldown for gadgets",
+    "classification": 1
+  },
+  {
+    "code": "F0EADC9E",
+    "internalName": "MeleeWeapon_Wrench_Sledgehammer",
+    "displayName": "Lady Smash",
+    "shortDescription": "A Big Hammer",
+    "longDescription": "Grapple replaced with a unique smash and hack attack",
+    "classification": 1
+  },
+  {
+    "code": "3B718A9E",
+    "internalName": "MeleeWeapon_LeadPipe",
+    "displayName": "Lead Pipe",
+    "shortDescription": "Light Melee Weapon",
+    "longDescription": "Fast, quick hitting melee strikes. Unblockable",
+    "classification": 1
+  },
+  {
+    "code": "2302CA44",
+    "internalName": "Passive_ReducedArrestTimeSelf",
+    "displayName": "Light Sentence",
+    "shortDescription": "Shorter Arrest Time",
+    "longDescription": "Spend less time in jail when arrested",
+    "classification": 1
+  },
+  {
+    "code": "4F7F015D",
+    "internalName": "Passive_Stealth",
+    "displayName": "Light Step",
+    "shortDescription": "Improved Stealth",
+    "longDescription": "Reduce enemy detection speed",
+    "classification": 1
+  },
+  {
+    "code": "14F11345",
+    "internalName": "Passive_LowMobility",
+    "displayName": "Low Mobility",
+    "shortDescription": "No Cover Or Sprint",
+    "longDescription": "Slower, and cannot take cover or sprint",
+    "classification": 0
+  },
+  {
+    "code": "89872973",
+    "internalName": "Passive_DiscountClothing",
+    "displayName": "Loyalty Card",
+    "shortDescription": "Like I said. Short-sighted... You're making loads for doing fuck all. You can sneak a little piece when you can, long as you don't damage the merchandise, right? And you still complaining. Some blokes don't know how good they got it.",
+    "longDescription": "All operatives get discounts at clothing shops",
+    "classification": 1
+  },
+  {
+    "code": "92D6855A",
+    "internalName": "Weapon_Launcher_M052LTL",
+    "displayName": "LTL APGL",
+    "shortDescription": "Shock Round Grenade Launcher",
+    "longDescription": "Slow-firing, anti-drone weapon that launches shock rounds for wide area of effect",
+    "classification": 1
+  },
+  {
+    "code": "F21EE677",
+    "internalName": "Weapon_Sidearm_PneuDartX2",
+    "displayName": "LTL Dart Gun",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A silent, non-lethal, instant knockout weapon",
+    "classification": 1
+  },
+  {
+    "code": "735864CB",
+    "internalName": "Weapon_AssaultRifle_Goblin",
+    "displayName": "LTL Goblin",
+    "shortDescription": "Shock Rifle",
+    "longDescription": "A non-lethal burst fire rifle with good versatility",
+    "classification": 1
+  },
+  {
+    "code": "E8C8F171",
+    "internalName": "Weapon_Sidearm_MP9LTL",
+    "displayName": "LTL MP7",
+    "shortDescription": "Burst-Fire Shock SMG",
+    "longDescription": "Enhanced SMG with greater recoil and larger magazine size",
+    "classification": 1
+  },
+  {
+    "code": "0736A46A",
+    "internalName": "Weapon_SMG_SIGMPX",
+    "displayName": "LTL MPX",
+    "shortDescription": "Full-Auto Shock SMG",
+    "longDescription": "A full-auto SMG with high recoil",
+    "classification": 1
+  },
+  {
+    "code": "1B4A1894",
+    "internalName": "Weapon_Exotic_RangedTaser",
+    "displayName": "LTL Stun Gun",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A very close range, silent, instant knockout weapon",
+    "classification": 1
+  },
+  {
+    "code": "1CF8B4D4",
+    "internalName": "Weapon_Shotgun_M1014",
+    "displayName": "M1014",
+    "shortDescription": "LTL M1014",
+    "longDescription": "A non-lethal pump-action shotgun with high damage",
+    "classification": 1
+  },
+  {
+    "code": "C5BD380A",
+    "internalName": "Weapon_LMG_M249",
+    "displayName": "M249",
+    "shortDescription": "Light Machine Gun",
+    "longDescription": "A full-auto LMG with a large clip and long reload time",
+    "classification": 1
+  },
+  {
+    "code": "3A73E540",
+    "internalName": "Weapon_Shotgun_M590",
+    "displayName": "M590",
+    "shortDescription": "Semi-Auto Shotgun",
+    "longDescription": "A semi-auto shotgun with high damage",
+    "classification": 1
+  },
+  {
+    "code": "AB2CD488",
+    "internalName": "Weapon_AssaultRifle_SIGMCX",
+    "displayName": "MCX",
+    "shortDescription": "Shock Rifle",
+    "longDescription": "A non-lethal semi-auto rifle with good versatility",
+    "classification": 1
+  },
+  {
+    "code": "41CF3E22",
+    "internalName": "Gadget_Exotic_Megaphone",
+    "displayName": "Megaphone",
+    "shortDescription": "Rally People to Fight",
+    "longDescription": "Rally up to 4 nearby sympathisers to become temporary allies",
+    "classification": 1
+  },
+  {
+    "code": "325B6B50",
+    "internalName": "MeleeWeapon_Baton_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "8B9CB806",
+    "internalName": "Gadget_PanicWave",
+    "displayName": "Mental Blast",
+    "shortDescription": "Disrupt Nearby Targets",
+    "longDescription": "Targets nearby are disrupted and receive damage",
+    "classification": 1
+  },
+  {
+    "code": "1C4AE9C3",
+    "internalName": "Passive_Mouthguard",
+    "displayName": "Mouth Guard",
+    "shortDescription": "Take Less Melee Damage",
+    "longDescription": "Reduce melee damage taken",
+    "classification": 1
+  },
+  {
+    "code": "B9331133",
+    "internalName": "Weapon_SMG_MP5",
+    "displayName": "MP5",
+    "shortDescription": "Full-Auto SMG",
+    "longDescription": "A full-auto SMG with high rate of fire",
+    "classification": 1
+  },
+  {
+    "code": "18AE060E",
+    "internalName": "Weapon_SMG_MP5Silenced",
+    "displayName": "MP5 Silenced",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A full-auto SMG with a high rate of fire",
+    "classification": 1
+  },
+  {
+    "code": "0A973A6C",
+    "internalName": "Gadget_AidenDrone",
+    "displayName": "Multidrone",
+    "shortDescription": null,
+    "longDescription": "A transforming drone that can hack devices in spider mode, or carry packages in flight mode",
+    "classification": 1
+  },
+  {
+    "code": "E2858E61",
+    "internalName": "Weapon_Exotic_Nailgun",
+    "displayName": "Nail Gun",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A silent, semi-auto weapon that fires nails",
+    "classification": 1
+  },
+  {
+    "code": "E2FAA0D8",
+    "internalName": "Weapon_LMG_Negev",
+    "displayName": "NEGEV",
+    "shortDescription": "Light Machine Gun",
+    "longDescription": "A full-auto LMG with a large clip and long reload time",
+    "classification": 1
+  },
+  {
+    "code": "732A1808",
+    "internalName": "Gadget_DroneSummon_NewsDrone",
+    "displayName": "News Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a personal News Drone",
+    "classification": 1
+  },
+  {
+    "code": "43244245",
+    "internalName": "Gadget_Grenade_Wrench_FlashBombs",
+    "displayName": "Ninja Balls",
+    "shortDescription": "Mini LTL Flashbangs",
+    "longDescription": "Stun, stagger and slow enemies with a POOF!",
+    "classification": 1
+  },
+  {
+    "code": "8F4CD55A",
+    "internalName": "Gadget_MindControl",
+    "displayName": "OMNI Optik",
+    "shortDescription": "Mind Control Device",
+    "longDescription": "Hijack and control enemy minds",
+    "classification": 1
+  },
+  {
+    "code": "CA21746B",
+    "internalName": "Passive_MentalCharge",
+    "displayName": "OMNI Recharge",
+    "shortDescription": "Takedowns Reset OMNI Optik",
+    "longDescription": "Reset OMNI Optik cooldown using takedowns",
+    "classification": 1
+  },
+  {
+    "code": "6B3F5B7B",
+    "internalName": "Passive_IncreasedArrestTimeSelf",
+    "displayName": "On Probation",
+    "shortDescription": "Longer Arrest Time",
+    "longDescription": "Spend more time in jail when arrested",
+    "classification": 0
+  },
+  {
+    "code": "FE63370B",
+    "internalName": "Weapon_Exotic_BeeOvercharger",
+    "displayName": "Overcharger",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "Causes a bee swarm to explode non-lethally",
+    "classification": 1
+  },
+  {
+    "code": "E50947DC",
+    "internalName": "Weapon_AssaultRifle_P308",
+    "displayName": "P308",
+    "shortDescription": "Semi-Auto Rifle",
+    "longDescription": "A semi-auto rifle with high accuracy and long range",
+    "classification": 1
+  },
+  {
+    "code": "36730429",
+    "internalName": "Weapon_Sidearm_P250",
+    "displayName": "P9",
+    "shortDescription": "Semi-Auto Pistol",
+    "longDescription": "A semi-auto pistol with short reload time",
+    "classification": 1
+  },
+  {
+    "code": "D61AAED7",
+    "internalName": "Weapon_Sidearm_P9",
+    "displayName": "P9",
+    "shortDescription": "Semi-Auto Pistol",
+    "longDescription": "A semi-auto pistol with short reload time",
+    "classification": 1
+  },
+  {
+    "code": "54CA61F4",
+    "internalName": "WeaponCombo_P9_and_Launcher",
+    "displayName": "P9 + APGL",
+    "shortDescription": "Weapon Arsenal",
+    "longDescription": "Comes with an MP9 pistol and an  APGL Grenade Launcher",
+    "classification": 1
+  },
+  {
+    "code": "4A8C8FA3",
+    "internalName": "Weapon_Sidearm_P9Silent",
+    "displayName": "P9 Silenced",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A silent, semi-auto pistol with short reload time",
+    "classification": 1
+  },
+  {
+    "code": "93A5E060",
+    "internalName": "Gadget_Grenade_PaintGrenade",
+    "displayName": "Paint Bomb",
+    "shortDescription": "Disorient Enemies",
+    "longDescription": "Creates a paint blast that disorients enemies",
+    "classification": 1
+  },
+  {
+    "code": "E19CA116",
+    "internalName": "Weapon_Exotic_PaintBallGun",
+    "displayName": "Paintball Gun",
+    "shortDescription": "Unique Weapon",
+    "longDescription": "A non-lethal weapon that disorients on headshots",
+    "classification": 1
+  },
+  {
+    "code": "D6B7B762",
+    "internalName": "Emote_Begging",
+    "displayName": "Panhandler",
+    "shortDescription": "Beg for ETO",
+    "longDescription": "Panhandle to occasionally gain ETO",
+    "classification": null
+  },
+  {
+    "code": "F2372EF2",
+    "internalName": "Gadget_DroneSummon_CameraDrone",
+    "displayName": "Parcel Fox Delivery Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a personal Camera Drone",
+    "classification": 1
+  },
+  {
+    "code": "017FF316",
+    "internalName": "Gadget_DroneSummon_DeliveryDrone",
+    "displayName": "Parcel Fox Delivery Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a personal Delivery Drone",
+    "classification": 1
+  },
+  {
+    "code": "8EE60E89",
+    "internalName": "Passive_Exotic_ContentStreamer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "2BB492D7",
+    "internalName": "Passive_FastHack_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "C0604397",
+    "internalName": "Passive_FastTransfer_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "8A9B1B4F",
+    "internalName": "Passive_HeavyPunch",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "532A32AA",
+    "internalName": "Passive_LowMobilityStrength",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 0
+  },
+  {
+    "code": "453687DC",
+    "internalName": "Passive_MeleeBuff_Hidden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "69B56A40",
+    "internalName": "Passive_RunNGun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A7381A34",
+    "internalName": "Passive_TwitchStreamer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "27A1FCBC",
+    "internalName": "Passive_DamageResist",
+    "displayName": "Physically Fit",
+    "shortDescription": "Take Less Damage",
+    "longDescription": "Reduce damage taken from all sources",
+    "classification": 1
+  },
+  {
+    "code": "C6457200",
+    "internalName": "WeaponCombo_AidenWeapons",
+    "displayName": "Pistol and Baton",
+    "shortDescription": "Versatile weapon combination",
+    "longDescription": "A reliable toolset for close to medium range engagements",
+    "classification": 1
+  },
+  {
+    "code": "19A68F42",
+    "internalName": "WeaponCombo_AidenWeapons_SilverBaton",
+    "displayName": "Pistol and Baton",
+    "shortDescription": "Versatile weapon combination",
+    "longDescription": "A reliable toolset for close to medium range engagements",
+    "classification": 1
+  },
+  {
+    "code": "0A0CDA47",
+    "internalName": "Gadget_Exotic_SwitchAllegiance",
+    "displayName": "Pocketwatch",
+    "shortDescription": "Switch Allegiance",
+    "longDescription": "Select a target to \"hypnotize\", temporarily becoming an ally",
+    "classification": 1
+  },
+  {
+    "code": "9CA95538",
+    "internalName": "Passive_ReducedArrestTimeTeam",
+    "displayName": "Police Contact",
+    "shortDescription": "Shorter Team Arrest Time",
+    "longDescription": "Dedsec teammates spend less time in jail",
+    "classification": 1
+  },
+  {
+    "code": "1D585FEE",
+    "internalName": "Passive_IncreasedRecoveryTimeSelf",
+    "displayName": "Prior Injuries",
+    "shortDescription": "Longer Injury Time",
+    "longDescription": "Spend more time in hospital when injured",
+    "classification": 0
+  },
+  {
+    "code": "3B22878F",
+    "internalName": "Passive_ReducedInjuryTimeTeam",
+    "displayName": "Priority Care",
+    "shortDescription": "Shorter Team Injury Time",
+    "longDescription": "Dedsec teammates spend less time injured",
+    "classification": 1
+  },
+  {
+    "code": "AD60254E",
+    "internalName": "Trigger_RallyTheCrew",
+    "displayName": "Rally Cry",
+    "shortDescription": "Call Friends to Fight",
+    "longDescription": "Summons friendly allies to assist in melee combat",
+    "classification": 1
+  },
+  {
+    "code": "99BC6FB3",
+    "internalName": "Weapon_Sidearm_357Rex",
+    "displayName": "REX 357",
+    "shortDescription": "Revolver",
+    "longDescription": "A revolver handgun with high damage",
+    "classification": 1
+  },
+  {
+    "code": "E02BF132",
+    "internalName": "WeaponCombo_Rex_and_Launcher",
+    "displayName": "REX 357 + APGL",
+    "shortDescription": "Weapon Arsenal",
+    "longDescription": "Comes with a REX 357 and an APGL Grenade Launcher",
+    "classification": 1
+  },
+  {
+    "code": "810DF5A9",
+    "internalName": "Emote_Saxophone",
+    "displayName": "Saxophone",
+    "shortDescription": "Emote",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "8346CAFE",
+    "internalName": "Twist_Hoarder",
+    "displayName": "Scavenger",
+    "shortDescription": "Loot & Hold More Ammo",
+    "longDescription": "Increased ammo reserves and pickups from enemies",
+    "classification": 1
+  },
+  {
+    "code": "B051AA7B",
+    "internalName": "Gadget_DroneSummon_TaserDrone",
+    "displayName": "Shock Drone",
+    "shortDescription": "Drone Summon",
+    "longDescription": "Summon a unique Shock Drone, with laser fire capability",
+    "classification": 1
+  },
+  {
+    "code": "6DD1EB3B",
+    "internalName": "Passive_ShockOptik",
+    "displayName": "Shock Hack",
+    "shortDescription": "Electrify Enemies",
+    "longDescription": "Can use the Shock hack, which damages enemies",
+    "classification": 1
+  },
+  {
+    "code": "83AC0575",
+    "internalName": "Passive_StaggerStrike",
+    "displayName": "Shockwave Strike",
+    "shortDescription": "Staggers Enemies",
+    "longDescription": "Takedowns, counters and last hits of a combo stagger nearby enemies",
+    "classification": 1
+  },
+  {
+    "code": "1617FC98",
+    "internalName": "Passive_CompulsiveShopper",
+    "displayName": "Shopaholic",
+    "shortDescription": "Randomly Buys Clothes",
+    "longDescription": "Occasionally purchases new clothing items",
+    "classification": 0
+  },
+  {
+    "code": "D3FC29D8",
+    "internalName": "Passive_RecruitmentCryptoBonus",
+    "displayName": "Signing Bonuses",
+    "shortDescription": "ETO Gain on Recruit",
+    "longDescription": "Gain ETO by recruiting operatives with this ability",
+    "classification": 1
+  },
+  {
+    "code": "9E026F1E",
+    "internalName": "Passive_CryptoEarnedTeam",
+    "displayName": "Skilled Investor",
+    "shortDescription": "Earn More ETO",
+    "longDescription": "Increase ETO gained by the whole team",
+    "classification": 1
+  },
+  {
+    "code": "F7BC893B",
+    "internalName": "Passive_SlowHacks",
+    "displayName": "Slow Hacking",
+    "shortDescription": "Long Hack Cooldowns",
+    "longDescription": "All hacks have significantly longer cooldowns",
+    "classification": 0
+  },
+  {
+    "code": "DC0D19E9",
+    "internalName": "Weapon_Wrench_WeaponArsenal",
+    "displayName": "SMG and LTL APGL",
+    "shortDescription": "Unique Weapon Arsenal",
+    "longDescription": "SMG and LTL APGL with unique hacking effects",
+    "classification": 1
+  },
+  {
+    "code": "19B9A4EA",
+    "internalName": "Gadget_Grenade_SmokeGrenade",
+    "displayName": "Smoke Grenade",
+    "shortDescription": "Blind and Disorient Enemies",
+    "longDescription": "Creates a cloud of smoke to block sight and disorient enemies",
+    "classification": 1
+  },
+  {
+    "code": "370B0C82",
+    "internalName": "Gadget_Exotic_SpyWatch",
+    "displayName": "Spy Watch",
+    "shortDescription": "Jam Enemy Weapons",
+    "longDescription": "Jam the weapons of all nearby enemies",
+    "classification": 1
+  },
+  {
+    "code": "E2955872",
+    "internalName": "Emote_LivingStatue",
+    "displayName": "Statue Pose",
+    "shortDescription": "Hide From Pursuit",
+    "longDescription": "Hide in plain sight to reduce pursuit at a faster rate",
+    "classification": null
+  },
+  {
+    "code": "2F2F593A",
+    "internalName": "Twist_PickPocket",
+    "displayName": "Sticky Fingers",
+    "shortDescription": "Ammo Drops Give ETO",
+    "longDescription": "Gain ETO when collecting ammo drops",
+    "classification": 1
+  },
+  {
+    "code": "3D56086A",
+    "internalName": "Passive_CounterStrike",
+    "displayName": "Strong Counters",
+    "shortDescription": "Damage Up After Dodge",
+    "longDescription": "Deal extra damage after a perfect dodge",
+    "classification": 1
+  },
+  {
+    "code": "A5758076",
+    "internalName": "MeleeWeapon_StuddedBat",
+    "displayName": "Studded Truncheon",
+    "shortDescription": "Light Melee Weapon",
+    "longDescription": "Fast, quick hitting melee strikes. Damages through block",
+    "classification": 1
+  },
+  {
+    "code": "2095DBAC",
+    "internalName": "Gadget_DroneSummon_WrenchDrone",
+    "displayName": "Summon Sergei",
+    "shortDescription": "Summon Custom Drone",
+    "longDescription": "Customized cargo drone and stalwart comrade",
+    "classification": 1
+  },
+  {
+    "code": "2C7A5755",
+    "internalName": "Emote_Sweeping",
+    "displayName": "Sweeping",
+    "shortDescription": "Hide From Pursuit",
+    "longDescription": "Hide in plain sight to reduce pursuit at a faster rate",
+    "classification": null
+  },
+  {
+    "code": "F53A2983",
+    "internalName": "Blackout",
+    "displayName": "System Crash",
+    "shortDescription": "Disable electronics in the area",
+    "longDescription": "Shut down all nearby cars, drones, weapons and security",
+    "classification": 1
+  },
+  {
+    "code": "FE7841B3",
+    "internalName": "Passive_PettyThief",
+    "displayName": "Takedown Thief",
+    "shortDescription": "Takedowns Steal ETO",
+    "longDescription": "Gain ETO during takedowns",
+    "classification": 1
+  },
+  {
+    "code": "F923FD2C",
+    "internalName": "Takedown_AidenPearce",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "44B6392A",
+    "internalName": "Takedown_Arrest",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "00C7EE8F",
+    "internalName": "Takedown_BarBrawler",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "9E027261",
+    "internalName": "Takedown_Bareknuckle",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "17414B2F",
+    "internalName": "Takedown_BullCharge",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "81BD10A7",
+    "internalName": "Takedown_Darcy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0FA5EA43",
+    "internalName": "Takedown_Defibrilator",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A854E336",
+    "internalName": "Takedown_DJ",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "17B896BF",
+    "internalName": "Takedown_DroneKiller",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0BE3B0E5",
+    "internalName": "Takedown_Flashy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B845B65B",
+    "internalName": "Takedown_Garotte",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "5BE0DFB8",
+    "internalName": "Takedown_Hypnotist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "770E38C8",
+    "internalName": "Takedown_Mina",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B04C1DCC",
+    "internalName": "Takedown_Rescuer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "53DC443D",
+    "internalName": "Takedown_SilentPistol",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "02EDA6C9",
+    "internalName": "Takedown_SprayPaint",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "2117931C",
+    "internalName": "Takedown_Taser",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "FE847C8C",
+    "internalName": "Takedown_ToughGuy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0E611675",
+    "internalName": "Takedown_Wrench",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F1CD69B9",
+    "internalName": "TeamMenu_Aiden",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D6E0D0D4",
+    "internalName": "TeamMenu_AlbionGuard",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E6862555",
+    "internalName": "TeamMenu_Anarchist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "90712935",
+    "internalName": "TeamMenu_BareknuckleFighter",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "260B5F53",
+    "internalName": "TeamMenu_BlackhatHacker",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0A537FCF",
+    "internalName": "TeamMenu_ClanKelley",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D07FDCA1",
+    "internalName": "TeamMenu_ConstructionWorker",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "31BB33A5",
+    "internalName": "TeamMenu_Darcy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F622A823",
+    "internalName": "TeamMenu_DJ",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A250EEE5",
+    "internalName": "TeamMenu_DroneExpert",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "3C24C3AC",
+    "internalName": "TeamMenu_DroneKiller",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "AABF8002",
+    "internalName": "TeamMenu_GetawayDriver",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "79CF3D99",
+    "internalName": "TeamMenu_Hooligan",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "56D9FB80",
+    "internalName": "TeamMenu_Hypnotist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "044E73AB",
+    "internalName": "TeamMenu_LivingStatue",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A1B518B2",
+    "internalName": "TeamMenu_Mina",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "21151D5E",
+    "internalName": "TeamMenu_Paramedic",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6CEB3266",
+    "internalName": "TeamMenu_PoliceConstable",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F6F0C51C",
+    "internalName": "TeamMenu_ProfessionalHitman",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6EE186BF",
+    "internalName": "TeamMenu_ProtestLeader",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "895CDC4A",
+    "internalName": "TeamMenu_QueensGuard",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "201DBE3A",
+    "internalName": "TeamMenu_Rescuer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "658A1E43",
+    "internalName": "TeamMenu_Spy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "37D19F96",
+    "internalName": "TeamMenu_Streamer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "75AE074B",
+    "internalName": "TeamMenu_StreetArtist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F8BD26BA",
+    "internalName": "TeamMenu_TidisBeekeeper",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "AACA7A06",
+    "internalName": "TeamMenu_ToughGuy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E0DF717A",
+    "internalName": "TeamMenu_Wrench",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "98303B93",
+    "internalName": "Gadget_Grenade_TearGas",
+    "displayName": "Tear Gas",
+    "shortDescription": "Damage and Disorient Enemies",
+    "longDescription": "Creates a cloud of gas that damages and disorients enemies",
+    "classification": 1
+  },
+  {
+    "code": "BAD2A535",
+    "internalName": "Toggle_Arrest",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "72DEA0B7",
+    "internalName": "Toggle_HiddenBlade",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E796E3BF",
+    "internalName": "Passive_ToughDrunk",
+    "displayName": "Tough Drunk",
+    "shortDescription": "Take Less Damage",
+    "longDescription": "Reduce melee damage taken when drunk",
+    "classification": 1
+  },
+  {
+    "code": "FA85A0F5",
+    "internalName": "Passive_AutoInjuryRecoveryTeam",
+    "displayName": "Triage",
+    "shortDescription": "Team Injury Release",
+    "longDescription": "Occasionally auto releases an injured teammate",
+    "classification": 1
+  },
+  {
+    "code": "CD4A08D9",
+    "internalName": "Emote_Trumpet",
+    "displayName": "Trumpet",
+    "shortDescription": "Emote",
+    "longDescription": "Perform music for an audience",
+    "classification": null
+  },
+  {
+    "code": "E5672A5F",
+    "internalName": "Twist_Wanted",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 0
+  },
+  {
+    "code": "4A4EEDF6",
+    "internalName": "Uniform_Albion_BargeCaptain",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "678FBBD2",
+    "internalName": "Uniform_Albion_Driver",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "614E7142",
+    "internalName": "Uniform_Albion_LabTech",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E9FEA379",
+    "internalName": "Uniform_AlbionCaptain",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "8DB6933F",
+    "internalName": "Uniform_AlbionCaptainElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "992C7F16",
+    "internalName": "Uniform_AlbionGrenadier",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "5B64ED2A",
+    "internalName": "Uniform_AlbionGrenadierElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "DDCF27E9",
+    "internalName": "Uniform_AlbionGrunt",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A008E913",
+    "internalName": "Uniform_AlbionGruntElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B512EDDB",
+    "internalName": "Uniform_AlbionOverwatch",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4A6C4B5B",
+    "internalName": "Uniform_AlbionOverwatchElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "26062520",
+    "internalName": "Uniform_AlbionRusher",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "87323E8B",
+    "internalName": "Uniform_AlbionRusherElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4FB4E9E5",
+    "internalName": "Uniform_Anarchist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D582A921",
+    "internalName": "Uniform_Barrister",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "60E31B56",
+    "internalName": "Uniform_Beekeeper",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "5FD5E6B0",
+    "internalName": "Uniform_Bouncer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D00F8096",
+    "internalName": "Uniform_Chef",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7367A2BD",
+    "internalName": "Uniform_CKCaptain",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "50F35BAE",
+    "internalName": "Uniform_CKCaptainElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "41BDC753",
+    "internalName": "Uniform_CKGrenadier",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A681C1B6",
+    "internalName": "Uniform_CKGrenadierElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B68D0AD9",
+    "internalName": "Uniform_CKGrunt",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A666CDB4",
+    "internalName": "Uniform_CKGruntElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6D83559E",
+    "internalName": "Uniform_CKOverwatch",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B78967C7",
+    "internalName": "Uniform_CKOverwatchElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "00B457A1",
+    "internalName": "Uniform_CKRusher",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "CF8666E4",
+    "internalName": "Uniform_CKRusherElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "76509FFF",
+    "internalName": "Uniform_Construction",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D9D4D7FF",
+    "internalName": "Uniform_DJ",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "42F8CF5E",
+    "internalName": "Uniform_Doctor",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4C5E40ED",
+    "internalName": "Uniform_Driver",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D44767F4",
+    "internalName": "Uniform_DroneExpert",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4D9F4F8B",
+    "internalName": "Uniform_Dronekiller",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "679FBD83",
+    "internalName": "Uniform_Hacker",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "FFEB3730",
+    "internalName": "Uniform_Hypnotist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6E8844D0",
+    "internalName": "Uniform_LivingStatue",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "82595BB9",
+    "internalName": "Uniform_Nurse",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "8827D1EE",
+    "internalName": "Uniform_Paramedic",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "27BC8EA0",
+    "internalName": "Uniform_PMC_Captain_OCO_Elite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "3084F650",
+    "internalName": "Uniform_PMC_Grenadier_OCO_Elite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A84462B9",
+    "internalName": "Uniform_PMC_Grunt_OCO_Elite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "C1FC0B5E",
+    "internalName": "Uniform_PMC_Overwatch_OCO_Elite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "37AC5A5E",
+    "internalName": "Uniform_PMC_Rusher_OCO_Elite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0EBE938D",
+    "internalName": "Uniform_Police_Captain",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4D0BB455",
+    "internalName": "Uniform_Police_Commissioner",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "E35D2FA7",
+    "internalName": "Uniform_Police_Detective",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "39186975",
+    "internalName": "Uniform_Police_OfficeConstables",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "75608428",
+    "internalName": "Uniform_Police_Sergeant",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D64F720C",
+    "internalName": "Uniform_PoliceConstable",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "337FBDFE",
+    "internalName": "Uniform_PrivateSecurity",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "9272A3A4",
+    "internalName": "Uniform_ProfessionalHitman",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A95CE83C",
+    "internalName": "Uniform_ProtestLeader",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "33AC923B",
+    "internalName": "Uniform_rescuer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "8B885808",
+    "internalName": "Uniform_RoyalGuard",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7F2D9FC9",
+    "internalName": "Uniform_SIRS",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "8F587AC7",
+    "internalName": "Uniform_SIRSElite",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "EAC076C3",
+    "internalName": "Uniform_Spy",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "1F683030",
+    "internalName": "Uniform_StreetArtist",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "197A0BDA",
+    "internalName": "Uniform_Surgeon",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F6B7C8F1",
+    "internalName": "Access_Albion",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Albion Locations",
+    "longDescription": "Reduce enemy awareness at Albion locations (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "DA26B594",
+    "internalName": "Access_ClanKelley",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Clan Kelley Locations",
+    "longDescription": "Reduce enemy awareness at Kelley locations (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "3E68D7C0",
+    "internalName": "Access_Construction",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Construction Sites",
+    "longDescription": "Reduce enemy awareness at Construction Sites (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "534DCF56",
+    "internalName": "Access_Custom_Buckingham",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Buckingham Palace",
+    "longDescription": "Reduce enemy awareness at Buckingham Palace (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "BD279C0B",
+    "internalName": "Access_Medical",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Medical Facilities",
+    "longDescription": "Reduce enemy awareness at Medical Facilities (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "A22582A8",
+    "internalName": "Access_Police",
+    "displayName": "Uniformed Access",
+    "shortDescription": "Police Stations",
+    "longDescription": "Reduce enemy awareness at Police Stations (Toggleable)",
+    "classification": 1
+  },
+  {
+    "code": "D445F240",
+    "internalName": "Weapon_SMG_Vector",
+    "displayName": "Vector .45 ACP",
+    "shortDescription": "Full-Auto SMG",
+    "longDescription": "A full-auto SMG with high damage",
+    "classification": 1
+  },
+  {
+    "code": "69B77740",
+    "internalName": "Passive_DiscountCars",
+    "displayName": "Vehicle Detailing",
+    "shortDescription": "Paint Job Discount",
+    "longDescription": "All operatives get discounts on vehicle paint jobs",
+    "classification": 1
+  },
+  {
+    "code": "CF4791BF",
+    "internalName": "Vehicle_Exotic_GetawayCar",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "DFF0A928",
+    "internalName": "Vehicle_Exotic_SpyCar",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "708F4690",
+    "internalName": "Vehicle_Hatchback_Bogen_25",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7A6259DD",
+    "internalName": "Vehicle_Hatchback_Bogen_25_Sport",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4FA424D8",
+    "internalName": "Vehicle_Hatchback_Bogen_50",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "229F7F63",
+    "internalName": "Vehicle_Hatchback_Bogen_50_Sport",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6A292633",
+    "internalName": "Vehicle_Hatchback_Nakahawa_SX_825",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4ED1A46D",
+    "internalName": "Vehicle_Hatchback_Nakahawa_SX_825_Hot",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "DB73E5AC",
+    "internalName": "Vehicle_Hatchback_Peyron_Hi-Life",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "C4294B42",
+    "internalName": "Vehicle_Hatchback_Peyron_Hi-Life_Hot",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "5B171AA7",
+    "internalName": "Vehicle_Hatchback_Talos_Vitta",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "4199D52D",
+    "internalName": "Vehicle_Hatchback_Talos_Vitta_Hot",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "412B8A8B",
+    "internalName": "Vehicle_Performance_Atterly_Fairlight",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "B1029E9B",
+    "internalName": "Vehicle_Performance_Bogen_Hailkal_Ev4",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6A32CC1A",
+    "internalName": "Vehicle_Performance_Bogen_Hailkal_Ev4_Hot",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F30FF1BD",
+    "internalName": "Vehicle_Performance_De_Vale_VK7",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "86BAACB0",
+    "internalName": "Vehicle_Performance_Marlott_Mk3",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "C95F4422",
+    "internalName": "Vehicle_Performance_Oscuro_Ultra_8",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "7BFD48E2",
+    "internalName": "Vehicle_Performance_Peyron_Ardour",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0D2E1F04",
+    "internalName": "Vehicle_Performance_Targ_536-TT",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F64AC9D6",
+    "internalName": "Vehicle_Saloon_Cavale_LSE800",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "73004B0A",
+    "internalName": "Vehicle_Saloon_De_Vale_Cardinal",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "46FDF573",
+    "internalName": "Vehicle_Saloon_Diemar_DM50",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "5C05B300",
+    "internalName": "Vehicle_Saloon_Diemar_DM50_Sport",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "D2FFABFA",
+    "internalName": "Vehicle_Saloon_Elek_Asteria_One",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "50582700",
+    "internalName": "Vehicle_Saloon_Marlott_Mk6",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F1225818",
+    "internalName": "Vehicle_Saloon_Talos_Solace",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "08A756E4",
+    "internalName": "Vehicle_Saloon_Talos_Solace_Sport",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "6E24A66D",
+    "internalName": "Vehicle_SUV_Landrock_Conquerer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "776884BB",
+    "internalName": "Vehicle_SUV_Landrock_Conquerer_Sport",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "1E448E9C",
+    "internalName": "Vehicle_SUV_Landrock_XP-7",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "1CF32295",
+    "internalName": "Vehicle_SUV_Talos_Maxera",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "12AE8DF4",
+    "internalName": "Vehicle_TwoWheel_Agosti_Legionario",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "19A49426",
+    "internalName": "Vehicle_TwoWheel_Agosti_Legionario_ParcelFox",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "AE8DCD2A",
+    "internalName": "Vehicle_TwoWheel_Kurahawa_Knight",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7956B200",
+    "internalName": "Vehicle_TwoWheel_Kurahawa_Spur",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "3D820610",
+    "internalName": "Vehicle_TwoWheel_Kurahawa_Tourer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "0DCAB6BE",
+    "internalName": "Vehicle_TwoWheel_Sayonara_S1",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "669C5E76",
+    "internalName": "Vehicle_Utility_Elek_Guide",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "01284F9C",
+    "internalName": "Vehicle_Utility_Materhorn_EKG_120_Ambulance",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "A9D10FC9",
+    "internalName": "Vehicle_Utility_Materhorn_Supreme",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "ECCE1D9F",
+    "internalName": "Vehicle_Utility_Materhorn_Supreme_Security",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "274AE464",
+    "internalName": "Vehicle_Utility_Materhorn_TQ5000_DoubleDeckerBus",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "19F1FA3C",
+    "internalName": "Vehicle_Utility_Talos_Scope",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "3A58702C",
+    "internalName": "Vehicle_Utility_Taxi",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F2009A0F",
+    "internalName": "Passive_VirusHacks",
+    "displayName": "Viral Hacking",
+    "shortDescription": "Hacks Propagate",
+    "longDescription": "When hacking, hold the button to affect a large radius",
+    "classification": 1
+  },
+  {
+    "code": "1889244F",
+    "internalName": "Weapon_DLC_AssaultRifle",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "74ACBC96",
+    "internalName": "Weapon_DLC_DartGun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "79755A14",
+    "internalName": "Weapon_DLC_LethalLMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "8244C77C",
+    "internalName": "Weapon_DLC_LethalShotgun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "564BC5F2",
+    "internalName": "Weapon_DLC_LTLAssaultRifle",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "9F224BE0",
+    "internalName": "Weapon_DLC_LTLLMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "2A370315",
+    "internalName": "Weapon_DLC_LTLShotgun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "D4793EF1",
+    "internalName": "Weapon_DLC_WrenchLTLLauncher",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "0A6ACD42",
+    "internalName": "Weapon_DLC_WrenchLTLSMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "2842BA54",
+    "internalName": "Weapon_Exotic_HiddenGun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "31159CDA",
+    "internalName": "Weapon_Shotgun_HVC",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": "Semi-Auto Shotgun",
+    "classification": 1
+  },
+  {
+    "code": "E5926447",
+    "internalName": "Weapon_Sidearm_FN303",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "3E0FC97E",
+    "internalName": "WeaponProgression_AssaultRifle",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "241B9B00",
+    "internalName": "WeaponProgression_GrenadeLauncher",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "46650AFA",
+    "internalName": "WeaponProgression_LMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "4AA0EC4A",
+    "internalName": "WeaponProgression_Pistol",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "24FCE0AB",
+    "internalName": "WeaponProgression_Shotgun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "41414990",
+    "internalName": "WeaponProgression_SilentSidearmLethal",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "7DCE0CFB",
+    "internalName": "WeaponProgression_SilentSidearmLTL",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "AD98ECC8",
+    "internalName": "WeaponProgression_SilentSMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "511FEEB7",
+    "internalName": "WeaponProgression_SMG",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "4659883A",
+    "internalName": "WeaponProgression_Sniper",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "70C8BAC8",
+    "internalName": "WeaponProgression_Taser",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "D7EA8804",
+    "internalName": "WeaponProgression_TaserShotgun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "DB24DC65",
+    "internalName": "Weapons_Exotic_PhantomDart",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": 1
+  },
+  {
+    "code": "AF7EB721",
+    "internalName": "MeleeWeapon_Wrench",
+    "displayName": "Wrench",
+    "shortDescription": "Heavy Melee Weapon",
+    "longDescription": "Slow, hard hitting melee strikes. Damages through block",
+    "classification": 1
+  },
+  {
+    "code": "54F48447",
+    "internalName": "zDoNotUse_Passive_Activity_StreetArt",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "FA13C7D7",
+    "internalName": "zDoNotUse_Passive_CryptoRecruitmentBonus",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "72935017",
+    "internalName": "zDoNotUse_Passive_GunJammer",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7CAB2A0F",
+    "internalName": "zDoNotUse_Passive_NeverSurrender",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "492EAFCC",
+    "internalName": "zDoNotUse_Passive_NoGadget",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "599EFBD6",
+    "internalName": "zDoNotUse_Passive_OldManStrength",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "861D1D97",
+    "internalName": "zDoNotUse_Passive_OnTheRun",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "F76BA3F3",
+    "internalName": "zDoNotUse_Passive_SerialKiller",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7891552F",
+    "internalName": "zDoNotUse_Passive_SwitchAIAllegience",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "7CF78BE5",
+    "internalName": "zDoNotUse_Vehicle_Utility_Materhorn_Hauler_Box",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  },
+  {
+    "code": "CDBB6172",
+    "internalName": "zDoNotUse_Vehicle_Utility_Materhorn_Hauler_Flatbed",
+    "displayName": null,
+    "shortDescription": null,
+    "longDescription": null,
+    "classification": null
+  }
+]

@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+publish/
+release/
+src/WDLConsoleCompanion/Assets/app-icon-chroma.png

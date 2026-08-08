@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>WDLConsoleCompanion</AssemblyName>
+    <RootNamespace>WDLConsoleCompanion</RootNamespace>
+    <ApplicationIcon>Assets\app-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="config\trainer.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="config\localization.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="config\perks.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="config\metadata.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

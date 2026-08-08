@@ -1,0 +1,38 @@
+{
+  "processName": "WatchDogsLegion",
+  "duniaModules": [
+    "DuniaDemo_clang_64_dx12.dll",
+    "DuniaDemo_clang_64_dx11.dll",
+    "DuniaDemo_clang_64_dx12_plus.dll",
+    "DuniaDemo_clang_64_dx11_plus.dll"
+  ],
+  "maxRosterCount": 256,
+  "operativeManagerHook": {
+    "pattern": "E8 ?? ?? ?? ?? 48 85 C0 74 1C 48 83 C6 10 48 8B 08",
+    "matchOffset": 17,
+    "expectedBytes": "4C 8B 81 20 02 00 00"
+  },
+  "censusManagerGlobal": {
+    "pattern": "B9 D0 02 00 00 BA 10 00 00 00 E8 ?? ?? ?? ?? 48 89 C6 48 89 C1 E8 ?? ?? ?? ?? 48 89 35 ?? ?? ?? ??",
+    "matchOffset": 26,
+    "displacementOffset": 3,
+    "instructionLength": 7
+  },
+  "offsets": {
+    "rosterCount": 224,
+    "rosterArray": 264,
+    "operativeId": 416,
+    "operativeAvailability": 24,
+    "operativeOrigin": 8,
+    "currentAppearance": 336,
+    "defaultAppearance": 248,
+    "censusCount": 156,
+    "censusArray": 160,
+    "censusEntryId": 16,
+    "censusEntryActor": 24,
+    "censusActorDescriptor": 184,
+    "censusDescriptorNameData": 96,
+    "firstNameLocId": 532,
+    "surnameLocId": 812
+  }
+}

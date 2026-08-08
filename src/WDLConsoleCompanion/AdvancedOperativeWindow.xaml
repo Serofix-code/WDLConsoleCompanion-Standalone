@@ -1,0 +1,24 @@
+<Window x:Class="WDLConsoleCompanion.AdvancedOperativeWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Advanced Operative Metadata" Width="930" Height="650" MinWidth="720" MinHeight="440">
+  <Grid Margin="16"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <DockPanel Margin="0,0,0,12">
+      <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"><Button Content="Refresh" Click="Refresh_Click"/><Button Content="Save selected field" Background="#4A202A" BorderBrush="#B64C5D" Click="Save_Click"/></StackPanel>
+      <StackPanel><TextBlock Text="HIGH-RISK OPERATIVE METADATA" FontSize="20" FontWeight="Bold" Foreground="#F0A44B"/>
+        <TextBlock Text="Raw CT-compatible values. Back up your save. Edit one field at a time; malformed values are rejected." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap"/></StackPanel>
+    </DockPanel>
+    <DataGrid x:Name="FieldGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectionUnit="FullRow"
+              Background="{StaticResource PanelBrush}" Foreground="{StaticResource TextBrush}" BorderBrush="{StaticResource BorderBrush}" RowBackground="#111722" AlternatingRowBackground="#151C28">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Field" Binding="{Binding DisplayName}" IsReadOnly="True" Width="190"/>
+        <DataGridTemplateColumn Header="Known value (select by name)" Width="270"><DataGridTemplateColumn.CellTemplate><DataTemplate>
+          <ComboBox ItemsSource="{Binding Options}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsAvailable}" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Display" MaxDropDownHeight="280"/>
+        </DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+        <DataGridTextColumn Header="Resolved name" Binding="{Binding ResolvedName}" IsReadOnly="True" Width="210"/>
+        <DataGridTextColumn Header="Raw hexadecimal value" Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Width="250"/>
+        <DataGridTextColumn Header="Risk" Binding="{Binding Risk}" IsReadOnly="True" Width="95"/>
+        <DataGridTextColumn Header="Meaning" Binding="{Binding Description}" IsReadOnly="True" Width="*"/>
+      </DataGrid.Columns>
+    </DataGrid>
+    <TextBlock x:Name="Footer" Grid.Row="2" Margin="2,10,0,0" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap"/>
+  </Grid>
+</Window>

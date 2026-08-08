@@ -1,0 +1,41 @@
+<Window x:Class="WDLConsoleCompanion.OperativesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Operative Roster" Width="1080" Height="640" MinWidth="820" MinHeight="420">
+  <Grid Margin="16">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <DockPanel Margin="0,0,0,12">
+      <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+        <Button Content="Refresh" Click="Refresh_Click"/>
+        <Button Content="Save changes" Click="Save_Click"/>
+        <Button Content="Edit perks (risky)" Background="#4A202A" BorderBrush="#B64C5D" Click="Perks_Click"/>
+        <Button Content="Advanced metadata (high risk)" Background="#4A3020" BorderBrush="#D8843E" Click="Advanced_Click"/>
+        <Button Content="Remove" Background="#402029" BorderBrush="#7A3342" Click="Remove_Click"/>
+      </StackPanel>
+      <StackPanel><TextBlock Text="OPERATIVE ROSTER" FontSize="20" FontWeight="Bold" Foreground="{StaticResource AccentBrush}"/>
+        <TextBlock Text="Names must exist in config/localization.json. Select a row before saving or removing." Foreground="{StaticResource MutedBrush}"/></StackPanel>
+    </DockPanel>
+    <DataGrid x:Name="RosterGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+              SelectionMode="Single" SelectionUnit="FullRow" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+              Background="{StaticResource PanelBrush}" Foreground="{StaticResource TextBrush}" BorderBrush="{StaticResource BorderBrush}"
+              RowBackground="#111722" AlternatingRowBackground="#151C28" HorizontalGridLinesBrush="#222D3E">
+      <DataGrid.Resources>
+        <Style TargetType="DataGridColumnHeader"><Setter Property="Background" Value="#1B2432"/><Setter Property="Foreground" Value="#AFC0D8"/><Setter Property="Padding" Value="10,8"/></Style>
+        <Style TargetType="DataGridCell"><Setter Property="BorderThickness" Value="0"/><Setter Property="Padding" Value="8,5"/></Style>
+      </DataGrid.Resources>
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="#" Binding="{Binding Index}" IsReadOnly="True" Width="55"/>
+        <DataGridTextColumn Header="First name" Binding="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+        <DataGridTextColumn Header="Surname" Binding="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+        <DataGridComboBoxColumn x:Name="AvailabilityColumn" Header="Availability" SelectedValueBinding="{Binding Availability, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Value" DisplayMemberPath="Label" Width="120"/>
+        <DataGridComboBoxColumn x:Name="OriginColumn" Header="Origin" SelectedValueBinding="{Binding Origin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Value" DisplayMemberPath="Label" Width="145"/>
+        <DataGridTextColumn Header="Current appearance code (24 bytes)" Binding="{Binding CurrentAppearanceCode, UpdateSourceTrigger=PropertyChanged}" Width="360"/>
+        <DataGridTextColumn Header="Default appearance code (24 bytes)" Binding="{Binding DefaultAppearanceCode, UpdateSourceTrigger=PropertyChanged}" Width="360"/>
+        <DataGridTextColumn Header="Operative ID" Binding="{Binding IdHex}" IsReadOnly="True" Width="190"/>
+        <DataGridTextColumn Header="Name loc ID" Binding="{Binding FirstNameLocId}" IsReadOnly="True" Width="110"/>
+        <DataGridTextColumn Header="Surname loc ID" Binding="{Binding SurnameLocId}" IsReadOnly="True" Width="120"/>
+      </DataGrid.Columns>
+    </DataGrid>
+    <TextBlock x:Name="Footer" Grid.Row="2" Margin="2,10,0,0" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap"/>
+  </Grid>
+</Window>

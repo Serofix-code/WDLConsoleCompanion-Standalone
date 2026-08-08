@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A console-first offline save companion for Watch Dogs: Legion.">
+  <title>WDL Console Companion</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav><a class="brand" href="#top">WDL<span>//</span>CC</a><div><a href="#features">Features</a><a href="#safety">Safety</a><a href="#docs">Docs</a></div></nav>
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">OFFLINE · STANDALONE · SAFETY-FIRST</p>
+      <h1>Your Legion saves,<br><em>under your command.</em></h1>
+      <p class="lede">A real Windows command console for verified backups, safe restores, and a focused operative panel.</p>
+      <div class="actions"><a class="primary" href="#docs">Build the app</a><a class="secondary" href="#safety">Read the safety model</a></div>
+      <div class="terminal" aria-label="Example command console"><div class="dots">● ● ● <b>WDL CONSOLE</b></div><p><span>&gt;</span> op</p><p class="output ok">✓ Operative panel opened.</p><p><span>&gt;</span> backup</p><p class="output ok">✓ Backup created and SHA-256 verified.</p><p><span>&gt;</span><i></i></p></div>
+    </section>
+    <section id="features" class="grid"><article><b>01</b><h2>Real console</h2><p>Use a native Windows console and type <code>op</code> when you want the graphical operative panel.</p></article><article><b>02</b><h2>Combined launch</h2><p>A Desktop shortcut starts the companion and launches the Steam game in one step.</p></article><article><b>03</b><h2>Verified backups</h2><p>Every backup has a SHA-256 manifest. Restore checks integrity before replacing anything.</p></article></section>
+    <section id="safety" class="split"><div><p class="eyebrow">OFFLINE BY DESIGN</p><h2>Useful without pretending.</h2></div><div><p>No external trainer or table is opened. Unsupported live memory and proprietary save edits remain visibly disabled instead of reporting false success.</p><ul><li>Real console interface</li><li>No external trainer process</li><li>Game-running detection</li><li>Checksummed, atomic save utilities</li></ul></div></section>
+    <section id="docs" class="docs"><p class="eyebrow">QUICK START</p><h2>Open. Build. Command.</h2><ol><li>Install Visual Studio 2022 with .NET desktop development.</li><li>Open <code>WDLConsoleCompanion.sln</code>.</li><li>Press <kbd>F5</kbd>, then type <code>help</code>.</li></ol><p class="note">For a single executable, publish with the included <code>SingleFile</code> profile. The app targets .NET 8 on Windows.</p></section>
+  </main>
+  <footer><span>WDL Console Companion</span><span>Unofficial · Not affiliated with Ubisoft</span></footer>
+</body></html>
