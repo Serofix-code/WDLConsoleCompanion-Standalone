@@ -25,9 +25,9 @@ public partial class OperativesWindow : Window
         {
             var records = await Task.Run(_session.ReadRoster);
             _rows.Clear(); foreach (var record in records) _rows.Add(record);
-            Footer.Text = $"{records.Count} operatives · refreshed {DateTime.Now:T}. Appearance codes are CT-compatible 24-byte values; switch away from and back to an edited operative to refresh its rendered model.";
+            Footer.Text = $"{records.Count} operatives · refreshed {DateTime.Now:T}. Use the focused editor buttons for risky fields; switch away from and back to an operative after appearance changes.";
         }
-        catch (Exception ex) { Footer.Text = "Read stopped safely: " + ex.Message; MessageBox.Show(ex.Message, "Roster read stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-ROSTER-001", "Roster read stopped", ex); MessageBox.Show(Footer.Text, "Roster read stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { SetBusy(false); }
     }
 
@@ -45,7 +45,7 @@ public partial class OperativesWindow : Window
             MessageBox.Show(result + "\n\nClose and reopen the in-game Team menu before selecting an operative whose availability changed.",
                 "Operative changes saved", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        catch (Exception ex) { MessageBox.Show(ex.Message, "No changes written", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-ROSTER-002", "Operative changes were not written", ex); MessageBox.Show(Footer.Text, "No changes written", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { SetBusy(false); }
     }
     private async void Remove_Click(object sender, RoutedEventArgs e)
@@ -55,18 +55,32 @@ public partial class OperativesWindow : Window
             "Confirm roster removal", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes) return;
         SetBusy(true, "Re-validating and compacting roster…");
         try { await Task.Run(() => _session.RemoveOperative(row)); await RefreshAsync(); }
-        catch (Exception ex) { MessageBox.Show(ex.Message, "Removal stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-ROSTER-003", "Operative removal stopped", ex); MessageBox.Show(Footer.Text, "Removal stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { SetBusy(false); }
     }
     private void Perks_Click(object sender, RoutedEventArgs e)
     {
         if (RosterGrid.SelectedItem is not OperativeRecord row) { MessageBox.Show("Select an operative first."); return; }
-        new PerkWindow(_session, row) { Owner = this }.ShowDialog();
+        new PerkWindow(_session, row) { Owner = this }.Show();
     }
     private void Advanced_Click(object sender, RoutedEventArgs e)
     {
         if (RosterGrid.SelectedItem is not OperativeRecord row) { MessageBox.Show("Select an operative first."); return; }
-        new AdvancedOperativeWindow(_session, row) { Owner = this }.ShowDialog();
+        new AdvancedOperativeWindow(_session, row) { Owner = this }.Show();
     }
+    private void Statistics_Click(object sender, RoutedEventArgs e)
+    {
+        if (RosterGrid.SelectedItem is not OperativeRecord row) { MessageBox.Show("Select an operative first."); return; }
+        try { new StatisticsWindow(_session, row) { Owner = this }.Show(); }
+        catch (Exception ex) { string error = _session.ReportError("WDL-STATS-000", "Statistics editor could not be opened", ex); MessageBox.Show(error, "Statistics editor stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
+    }
+    private void Events_Click(object sender, RoutedEventArgs e)
+    {
+        if (RosterGrid.SelectedItem is not OperativeRecord row) { MessageBox.Show("Select an operative first."); return; }
+        try { new EventsWindow(_session, row) { Owner = this }.Show(); }
+        catch (Exception ex) { string error = _session.ReportError("WDL-EVENT-000", "Recent Events editor could not be opened", ex); MessageBox.Show(error, "Recent Events stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
+    }
+    private void Appearance_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new AppearanceWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
+    private void Contracts_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new ContractsWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
     private void SetBusy(bool busy, string? text = null) { RosterGrid.IsEnabled = !busy; if (text is not null) Footer.Text = text; }
 }

@@ -1,0 +1,22 @@
+<Window Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource TextBrush}" x:Class="WDLConsoleCompanion.EventsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Recent Events and Birthplace" Width="1120" Height="700" MinWidth="780" MinHeight="520">
+  <Grid Margin="18"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel><TextBlock Text="RECENT EVENTS &amp; CITY-LEVEL BIRTHPLACE" FontSize="21" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}"/><TextBlock Text="All event types are available. Search for an internal name such as NoParent09, readable words such as deaf parents, a city/country, or a numeric ID; then choose a replacement on the exact slot." Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/></StackPanel>
+    <Grid Grid.Row="1" Margin="0,14,0,6"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <TextBox x:Name="EventSearch" ToolTip="Search all events by internal name, readable description, city, country, or numeric ID" TextChanged="EventSearch_TextChanged"/>
+      <CheckBox x:Name="BirthplacesOnly" Grid.Column="1" Content="Birthplaces only" IsChecked="False" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="10,0"/>
+      <Button Grid.Column="2" Content="Clear search" Click="ClearSearch_Click"/>
+    </Grid>
+    <TextBlock x:Name="SearchStatus" Grid.Row="2" Foreground="{DynamicResource MutedBrush}" Margin="2,0,0,7"/>
+    <DataGrid x:Name="EventGrid" Grid.Row="3" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" RowBackground="{DynamicResource RowBrush}" AlternatingRowBackground="{DynamicResource AlternateRowBrush}">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" Width="190"/>
+        <DataGridTextColumn Header="Readable current event" Binding="{Binding Label}" Width="320"/>
+        <DataGridTextColumn Header="Current ID" Binding="{Binding Id}" Width="90"/>
+        <DataGridTemplateColumn Header="Replacement — choose on this exact slot" Width="*"><DataGridTemplateColumn.CellTemplate><DataTemplate>
+          <ComboBox ItemsSource="{Binding DataContext.FilteredCatalog, RelativeSource={RelativeSource AncestorType=Window}}" DisplayMemberPath="Display" SelectedItem="{Binding Replacement, Mode=TwoWay}" SelectionChanged="Replacement_SelectionChanged" MaxDropDownHeight="340" IsTextSearchEnabled="True" TextSearch.TextPath="Display" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" ToolTip="Choosing a replacement automatically selects this row for Save"/>
+        </DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+    <DockPanel Grid.Row="4" Margin="0,12,0,0"><TextBlock x:Name="Footer" Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" TextWrapping="Wrap"/><Button DockPanel.Dock="Right" Content="Save selected row (risky)" Background="#4A3020" BorderBrush="#D8843E" Click="Save_Click"/></DockPanel>
+  </Grid>
+</Window>

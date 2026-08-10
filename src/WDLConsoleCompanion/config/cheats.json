@@ -1,0 +1,11 @@
+{
+  "noreload": [
+    {
+      "modules": [ "DuniaDemo_clang_64_dx12_plus.dll" ],
+      "pattern": "80 7C 24 60 00 74 88",
+      "offset": 5,
+      "expectedBytes": "74 88",
+      "replacementBytes": "EB 88"
+    }
+  ]
+}

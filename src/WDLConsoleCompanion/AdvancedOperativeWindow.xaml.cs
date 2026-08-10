@@ -22,8 +22,8 @@ public partial class AdvancedOperativeWindow : Window
     private async Task RefreshAsync()
     {
         FieldGrid.IsEnabled = false; Footer.Text = "Resolving and validating NPC data…";
-        try { var values = await Task.Run(() => _session.ReadAdvancedFields(_operative)); _fields.Clear(); foreach (var value in values) _fields.Add(value); Footer.Text = $"{values.Count} CT-derived fields loaded. All are HIGH RISK."; }
-        catch (Exception ex) { Footer.Text = "Stopped safely: " + ex.Message; MessageBox.Show(ex.Message, "Metadata read stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        try { var values = await Task.Run(() => _session.ReadAdvancedFields(_operative)); _fields.Clear(); foreach (var value in values) _fields.Add(value); Footer.Text = $"{values.Count} advanced fields loaded. All are HIGH RISK."; }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-META-001", "Metadata read stopped", ex); MessageBox.Show(Footer.Text, "Metadata read stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { FieldGrid.IsEnabled = true; }
     }
 
@@ -34,6 +34,6 @@ public partial class AdvancedOperativeWindow : Window
         FieldGrid.CommitEdit(System.Windows.Controls.DataGridEditingUnit.Cell, true);
         if (MessageBox.Show($"Write {field.DisplayName} to {field.Value}?\n\nHIGH RISK: an accepted value can still crash the game or damage the save.", "Confirm high-risk write", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes) return;
         try { Footer.Text = await Task.Run(() => _session.SaveAdvancedField(_operative, field)); MessageBox.Show(Footer.Text, "Field saved", MessageBoxButton.OK, MessageBoxImage.Information); await RefreshAsync(); }
-        catch (Exception ex) { Footer.Text = "No change retained: " + ex.Message; MessageBox.Show(ex.Message, "Field not saved", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-META-002", "Metadata field was not saved", ex); MessageBox.Show(Footer.Text, "Field not saved", MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
 }

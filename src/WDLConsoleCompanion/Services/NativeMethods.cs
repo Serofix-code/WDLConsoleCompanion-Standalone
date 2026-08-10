@@ -74,4 +74,7 @@ internal static class NativeMethods
     internal static extern nint CreateRemoteThread(nint process, nint attributes, nuint stackSize, nint startAddress, nint parameter, uint flags, out uint threadId);
     [DllImport("kernel32.dll", SetLastError = true)]
     internal static extern uint WaitForSingleObject(nint handle, uint milliseconds);
+    [DllImport("psapi.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool EmptyWorkingSet(nint process);
 }
