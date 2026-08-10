@@ -1,0 +1,8 @@
+{
+  "theme": "Dark",
+  "autoInject": true,
+  "autoInjectDelaySeconds": 12,
+  "disableCheatsOnExit": true,
+  "coordinateRefreshMilliseconds": 500,
+  "companionMemoryTrimMb": 0
+}

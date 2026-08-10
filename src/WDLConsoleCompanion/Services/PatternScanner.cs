@@ -6,7 +6,24 @@ internal static class PatternScanner
 {
     internal static ulong FindUnique(RemoteProcess remote, ProcessModule module, string pattern)
     {
+        List<ulong> matches = FindAll(remote, module, pattern, 2);
+        if (matches.Count == 1)
+        {
+            var parsed = Parse(pattern);
+            byte[] live = remote.ReadBytes(matches[0], parsed.Values.Length);
+            if (IsMatch(live, 0, parsed.Values, parsed.Masks)) return matches[0];
+            matches.Clear();
+        }
+        if (matches.Count == 0) throw new InvalidOperationException($"Signature not found in {module.ModuleName}: {pattern}");
+        throw new InvalidOperationException($"Signature is not unique in {module.ModuleName}: {pattern}");
+    }
+
+    internal static List<ulong> FindAll(RemoteProcess remote, ProcessModule module, string pattern, int maximumMatches = 4096)
+    {
+        if (maximumMatches < 1) throw new ArgumentOutOfRangeException(nameof(maximumMatches));
         var (values, masks) = Parse(pattern);
+        int anchor = Array.FindIndex(masks, value => value);
+        if (anchor < 0) throw new InvalidOperationException("A signature must contain at least one fixed byte.");
         ulong start = (ulong)module.BaseAddress;
         ulong end = start + (ulong)module.ModuleMemorySize;
         var matches = new List<ulong>();
@@ -28,27 +45,32 @@ internal static class PatternScanner
                     byte[] data;
                     try { data = remote.ReadBytes(chunk, length); }
                     catch { chunk += (ulong)length; continue; }
-                    for (int i = 0; i <= data.Length - values.Length; i++)
+                    int candidateStart = 0;
+                    while (candidateStart <= data.Length - values.Length)
                     {
-                        bool found = true;
-                        for (int j = 0; j < values.Length; j++)
-                            if (masks[j] && data[i + j] != values[j]) { found = false; break; }
-                        if (found) matches.Add(chunk + (ulong)i);
+                        int anchorSearchStart = candidateStart + anchor;
+                        int relative = data.AsSpan(anchorSearchStart).IndexOf(values[anchor]);
+                        if (relative < 0) break;
+                        int i = anchorSearchStart + relative - anchor;
+                        if (i > data.Length - values.Length) break;
+                        if (IsMatch(data, i, values, masks)) matches.Add(chunk + (ulong)i);
+                        candidateStart = i + 1;
                     }
-                    if (matches.Count > 1) break;
+                    if (matches.Count >= maximumMatches) break;
                     ulong advance = (ulong)Math.Max(1, length - values.Length + 1);
                     chunk += advance;
                 }
             }
-            if (matches.Count > 1) break;
+            if (matches.Count >= maximumMatches) break;
             cursor = regionEnd > cursor ? regionEnd : cursor + 0x1000;
         }
-        return matches.Count switch
-        {
-            1 => matches[0],
-            0 => throw new InvalidOperationException($"Signature not found in {module.ModuleName}: {pattern}"),
-            _ => throw new InvalidOperationException($"Signature is not unique in {module.ModuleName}: {pattern}")
-        };
+        return matches;
+    }
+
+    private static bool IsMatch(byte[] data, int offset, byte[] values, bool[] masks)
+    {
+        for (int j = 0; j < values.Length; j++) if (masks[j] && data[offset + j] != values[j]) return false;
+        return true;
     }
 
     internal static byte[] ParseBytes(string text) => text.Split(' ', StringSplitOptions.RemoveEmptyEntries)

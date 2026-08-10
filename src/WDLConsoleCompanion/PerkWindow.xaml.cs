@@ -37,7 +37,7 @@ public partial class PerkWindow : Window
             }
             Footer.Text = $"{snapshot.Ids.Count} perks resolved · capacity {snapshot.Capacity} · {(snapshot.Inline ? "inline" : "allocated")} storage";
         }
-        catch (Exception ex) { Footer.Text = ex.Message; MessageBox.Show(ex.Message, "Could not load perks", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-PERK-001", "Perks could not be loaded", ex); MessageBox.Show(Footer.Text, "Could not load perks", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { IsEnabled = true; }
     }
 
@@ -45,7 +45,7 @@ public partial class PerkWindow : Window
     private void AddPerk_Click(object sender, RoutedEventArgs e)
     {
         if (PerkPicker.SelectedItem is not PerkCatalogItem item) { MessageBox.Show("Choose a perk from the catalog first."); return; }
-        if (_perks.Any(row => row.Code.Equals(item.Code, StringComparison.OrdinalIgnoreCase))) { MessageBox.Show("That perk is already present."); return; }
+        if (_perks.Count >= 80) { MessageBox.Show("This editor supports at most 80 perk slots. Remove one before adding another."); return; }
         _perks.Add(PerkRow.From(item.Code, item));
     }
     private void RemovePerk_Click(object sender, RoutedEventArgs e) { if (sender is System.Windows.Controls.Button { Tag: PerkRow row }) _perks.Remove(row); }
@@ -59,7 +59,7 @@ public partial class PerkWindow : Window
             IsEnabled = false; Footer.Text = "Writing and verifying perk array…";
             string result = await Task.Run(() => _session.SavePerks(_operative, ids)); Footer.Text = result; MessageBox.Show(result, "Perks saved", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        catch (Exception ex) { Footer.Text = "Stopped: " + ex.Message; MessageBox.Show(ex.Message, "Perks not saved", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { Footer.Text = _session.ReportError("WDL-PERK-002", "Perks were not saved", ex); MessageBox.Show(Footer.Text, "Perks not saved", MessageBoxButton.OK, MessageBoxImage.Warning); }
         finally { IsEnabled = true; }
     }
 

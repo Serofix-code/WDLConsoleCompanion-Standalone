@@ -1,4 +1,6 @@
 using System.Buffers.Binary;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace WDLConsoleCompanion.Services;
 
@@ -11,11 +13,41 @@ internal sealed class CodeCaveHook : IDisposable
     private readonly ulong _allocation;
     private bool _installed;
     internal ulong DataAddress { get; }
+    internal bool WasAdopted { get; }
 
-    private CodeCaveHook(RemoteProcess remote, ulong patchAddress, byte[] original, byte[] patch, ulong allocation, ulong dataAddress)
+    private CodeCaveHook(RemoteProcess remote, ulong patchAddress, byte[] original, byte[] patch, ulong allocation, ulong dataAddress, bool wasAdopted = false)
     {
         _remote = remote; _patchAddress = patchAddress; _original = original; _patch = patch;
-        _allocation = allocation; DataAddress = dataAddress; _installed = true;
+        _allocation = allocation; DataAddress = dataAddress; _installed = true; WasAdopted = wasAdopted;
+    }
+
+    internal static CodeCaveHook InstallOrAdopt(RemoteProcess remote, ProcessModule module, string originalPattern, string patchedPattern, byte[] expected,
+        Func<ulong, ulong, ulong, byte[]> buildCode, ReadOnlySpan<byte> initialData = default, IReadOnlyList<byte[]>? adoptionFragments = null)
+    {
+        try
+        {
+            ulong patchAddress = PatternScanner.FindUnique(remote, module, originalPattern);
+            try { return Install(remote, patchAddress, expected, (codeBase, dataAddress) => buildCode(codeBase, dataAddress, patchAddress), initialData); }
+            catch (InvalidOperationException precondition) when (precondition.Message.StartsWith("Hook precondition failed", StringComparison.Ordinal))
+            {
+                byte[] actual = remote.ReadBytes(patchAddress, expected.Length);
+                if (TryAdopt(remote, patchAddress, expected, actual, adoptionFragments, out CodeCaveHook? direct)) return direct!;
+                throw;
+            }
+        }
+        catch (InvalidOperationException originalError) when (originalError.Message.StartsWith("Signature not found", StringComparison.Ordinal))
+        {
+            var adopted = new List<CodeCaveHook>();
+            foreach (ulong candidate in PatternScanner.FindAll(remote, module, patchedPattern))
+            {
+                byte[] actual;
+                try { actual = remote.ReadBytes(candidate, expected.Length); } catch { continue; }
+                if (TryAdopt(remote, candidate, expected, actual, adoptionFragments, out CodeCaveHook? hook)) adopted.Add(hook!);
+            }
+            if (adopted.Count == 1) return adopted[0];
+            if (adopted.Count > 1) throw new InvalidOperationException($"Found multiple recognized previous hooks for {originalPattern}; refusing ambiguous recovery.");
+            throw new InvalidOperationException($"{originalError.Message} No recognized previous companion hook could be recovered. Restart the game once to restore original engine code.", originalError);
+        }
     }
 
     internal static CodeCaveHook Install(RemoteProcess remote, ulong patchAddress, byte[] expected,
@@ -61,6 +93,46 @@ internal sealed class CodeCaveHook : IDisposable
         WriteProtected(_remote, _patchAddress, _original);
         NativeMethods.VirtualFreeEx(_remote.Handle, (nint)_allocation, 0, NativeMethods.FreeType.Release);
         _installed = false;
+    }
+
+    private static bool TryAdopt(RemoteProcess remote, ulong patchAddress, byte[] expected, byte[] actual, IReadOnlyList<byte[]>? adoptionFragments, out CodeCaveHook? hook)
+    {
+        hook = null;
+        if (actual.Length != expected.Length || actual.Length < 5 || actual[0] != 0xE9 || actual.Skip(5).Any(value => value != 0x90)) return false;
+        try
+        {
+            int displacement = BinaryPrimitives.ReadInt32LittleEndian(actual.AsSpan(1, 4));
+            ulong allocation = checked((ulong)((long)patchAddress + 5 + displacement));
+            ulong dataAddress = allocation + 0x1000;
+            int mbiSize = Marshal.SizeOf<NativeMethods.MemoryBasicInformation>();
+            if (NativeMethods.VirtualQueryEx(remote.Handle, (nint)allocation, out var codeInfo, (nuint)mbiSize) == 0 || (ulong)codeInfo.AllocationBase != allocation) return false;
+            if ((codeInfo.Protect & (NativeMethods.MemoryProtection.Execute | NativeMethods.MemoryProtection.ExecuteRead | NativeMethods.MemoryProtection.ExecuteReadWrite | NativeMethods.MemoryProtection.ExecuteWriteCopy)) == 0) return false;
+            if (NativeMethods.VirtualQueryEx(remote.Handle, (nint)dataAddress, out var dataInfo, (nuint)mbiSize) == 0 || dataInfo.AllocationBase != codeInfo.AllocationBase) return false;
+            if ((dataInfo.Protect & (NativeMethods.MemoryProtection.ReadWrite | NativeMethods.MemoryProtection.ExecuteReadWrite)) == 0) return false;
+
+            byte[] code = remote.ReadBytes(allocation, 0x400);
+            IReadOnlyList<byte[]> requiredFragments = adoptionFragments ?? [expected];
+            bool containsOriginal = true; int fragmentSearchStart = 0;
+            foreach (byte[] fragment in requiredFragments)
+            {
+                bool foundFragment = false;
+                for (int i = fragmentSearchStart; i <= code.Length - fragment.Length; i++)
+                    if (code.AsSpan(i, fragment.Length).SequenceEqual(fragment)) { foundFragment = true; fragmentSearchStart = i + fragment.Length; break; }
+                if (!foundFragment) { containsOriginal = false; break; }
+            }
+            bool returnsCorrectly = false;
+            for (int i = 0; i <= code.Length - 5; i++)
+            {
+                if (code[i] != 0xE9) continue;
+                int returnDisplacement = BinaryPrimitives.ReadInt32LittleEndian(code.AsSpan(i + 1, 4));
+                ulong target = checked((ulong)((long)allocation + i + 5 + returnDisplacement));
+                if (target == patchAddress + (ulong)expected.Length) { returnsCorrectly = true; break; }
+            }
+            if (!containsOriginal || !returnsCorrectly || !remote.IsRangeReadable(dataAddress, 8)) return false;
+            hook = new CodeCaveHook(remote, patchAddress, expected, actual, allocation, dataAddress, wasAdopted: true);
+            return true;
+        }
+        catch { return false; }
     }
 
     internal static void AddRel32(List<byte> code, ulong codeBase, ulong destination)
