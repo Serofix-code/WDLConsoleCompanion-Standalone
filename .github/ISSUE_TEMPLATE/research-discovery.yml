@@ -1,0 +1,41 @@
+name: Research discovery
+description: Propose a new function, event, API, type, signature, hash, UI symbol, or system mapping.
+title: "[Research]: "
+labels: [research]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Discovery kind
+      options: [function, event, lua_api, command, ui, type, enum, hash, system, signature, offset, call_chain]
+    validations: { required: true }
+  - type: input
+    id: build
+    attributes:
+      label: Tested build
+      description: Distribution, module filename, date, and SHA-256 if available. Never upload the module.
+    validations: { required: true }
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Proposed confidence
+      options: [unknown, inferred, strongly_inferred, confirmed]
+    validations: { required: true }
+  - type: textarea
+    id: observation
+    attributes:
+      label: Direct observation
+      description: Describe what happened without interpreting beyond the evidence.
+    validations: { required: true }
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps and non-proprietary evidence
+    validations: { required: true }
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: Repository integrity
+      options:
+        - label: I have not attached proprietary game files, assets, credentials, personal data, or unredacted dumps.
+          required: true

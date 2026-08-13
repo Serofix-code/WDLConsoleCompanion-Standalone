@@ -1,0 +1,35 @@
+name: Validate research database and tools
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+      - name: Validate machine-readable research
+        run: |
+          python tools/validate_database.py
+          python tools/check_duplicate_symbols.py
+          python tools/check_broken_references.py
+          python tools/generate_docs.py --check
+      - name: Build
+        run: dotnet build .\WDLConsoleCompanion.sln -c Release -p:Platform=x64
+      - name: Game-independent smoke tests
+        run: dotnet run --project .\tests\WDLConsoleCompanion.SmokeTests\WDLConsoleCompanion.SmokeTests.csproj -c Release
+      - name: Reject inappropriate tracked artifacts
+        shell: pwsh
+        run: |
+          $bad = git ls-files | Where-Object { $_ -match '\.(exe|dll|pak|fat|dat|save|sav|dmp)$' }
+          if ($bad) { $bad; throw 'Proprietary or generated binary-like artifacts must not be tracked.' }

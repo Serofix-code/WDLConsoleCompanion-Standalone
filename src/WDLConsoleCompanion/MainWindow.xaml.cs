@@ -42,6 +42,7 @@ public partial class MainWindow : Window
         _detectorTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
         _detectorTimer.Tick += async (_, _) => await DetectAndInjectAsync();
         Log("WDL Console Companion ready. Single-player/offline use only.");
+        Log($"TEMPORARY RESEARCH CSV logging enabled: {_session.ResearchLogPath}. Remove this after the camera is identified.");
         ApplyRuntimeSettings();
         Log(((App)Application.Current).Settings.AutoInject ? "Auto-inject is active. Commands: inject, operative, detach, status, clear, help, exit" : "Auto-inject is disabled in Settings; Manual Inject remains available.");
         Loaded += async (_, _) =>
@@ -84,6 +85,16 @@ public partial class MainWindow : Window
                 case "teleport":
                     if (!_session.IsAttached) await TryAttachAsync(manual: true);
                     if (_session.IsAttached) TeleportWindow.OpenFor(_session, this);
+                    break;
+                case "clothes":
+                case "clothing":
+                    if (!_session.IsAttached) await TryAttachAsync(manual: true);
+                    if (_session.IsAttached) ClothingWindow.OpenFor(_session, this);
+                    break;
+                case "freecam":
+                case "camera":
+                    if (!_session.IsAttached) await TryAttachAsync(manual: true);
+                    FreecamWindow.OpenFor(_session, this);
                     break;
                 case "cheatstatus": Log("Cheat status:\n" + _session.CheatStatus()); break;
                 case "god":
@@ -130,7 +141,7 @@ public partial class MainWindow : Window
                     ((App)Application.Current).SetTheme(requestedTheme);
                     Log($"Theme changed to {requestedTheme}.");
                     break;
-                case "help": Log("inject / attach       manually scan and install the hook\nop / operative          open Operative Studio\ncheats                   open the visual cheats panel\nscan / scanner           exact and change-filter memory scanner (super risky)\nteleport                 live coordinates, safety history and emergency return\nshortcuts                configure global F1-F12 bindings\nsettings                 theme, attachment, cleanup and performance\ntheme dark|light|system  change the application theme\neto                      add 1000 ETO (super risky)\ntech / techpoints        add 10 tech points (super risky)\ncheatstatus              print cheat status\ngodmode [on|off]         infinite player health\nimmortal [on|off]        game-thread death immunity (super risky)\nnotrace [on|off]         no wanted level + stealth\ndisablefelony [on|off]   disable the felony system (super risky)\ndisabledetection [on|off] make the player undetectable (super risky)\ninfammo [on|off]         infinite ammunition\nnoreload [on|off]        skip reload requirement\nnorecoil [on|off]        suppress weapon recoil\nfastsearch [on|off]      end pursuit searches faster\nhackcooldown [on|off]    instant hacker-skill cooldowns (super risky)\nfreezehack [on|off]      freeze active hack timer (super risky)\ndronerange [on|off]      maximum drone range (super risky)\ndronehealth [on|off]     infinite controlled-drone health (super risky)\nonehitkill [on|off]      one-hit non-player targets (super risky)\nendchase                 end the current felony chase\nspawnracecar             spawn a racecar at the reticle\nspawnshop                spawn a DedSec shop at the reticle\ndistractall / disruptall affect nearby human agents\ncopyconsole              copy the complete event console\nsaveconsole              export the console as a text file\nclear                    clear the console\ndetach                   restore all patches and pause auto-inject\nstatus, exit"); break;
+                case "help": Log("inject / attach       manually scan and install the hook\nop / operative          open Operative Studio\ncheats                   open the visual cheats panel\nclothes / clothing       shops + very experimental bulk clothing\nfreecam / camera         open the very experimental Freecam Lab\nscan / scanner           exact and change-filter memory scanner (super risky)\nteleport                 live coordinates, safety history and emergency return\nshortcuts                configure global F1-F12 bindings\nsettings                 theme, attachment, cleanup and performance\ntheme dark|light|system  change the application theme\neto                      add 1000 ETO (super risky)\ntech / techpoints        add 10 tech points (super risky)\ncheatstatus              print cheat status\ngodmode [on|off]         infinite player health\nimmortal [on|off]        game-thread death immunity (super risky)\nnotrace [on|off]         no wanted level + stealth\ndisablefelony [on|off]   disable the felony system (super risky)\ndisabledetection [on|off] make the player undetectable (super risky)\ninfammo [on|off]         infinite ammunition\nnoreload [on|off]        skip reload requirement\nnorecoil [on|off]        suppress weapon recoil\nfastsearch [on|off]      end pursuit searches faster\nhackcooldown [on|off]    instant hacker-skill cooldowns (super risky)\nfreezehack [on|off]      freeze active hack timer (super risky)\ndronerange [on|off]      maximum drone range (super risky)\ndronehealth [on|off]     infinite controlled-drone health (super risky)\nonehitkill [on|off]      one-hit non-player targets (super risky)\nendchase                 end the current felony chase\nspawnracecar             spawn a racecar at the reticle\nspawnshop                spawn a DedSec shop at the reticle\ndistractall / disruptall affect nearby human agents\ncopyconsole              copy the complete event console\nsaveconsole              export the console as a text file\nclear                    clear the console\ndetach                   restore all patches and pause auto-inject\nstatus, exit"); break;
                 case "exit": Close(); break;
                 case "": break;
                 default: Log($"Unknown command '{command}'. Type help."); break;
@@ -329,6 +340,7 @@ public partial class MainWindow : Window
     {
         LogText.Text += $"[{DateTime.Now:HH:mm:ss}] {message}{Environment.NewLine}";
         LogText.ScrollToEnd();
+        try { _session.WriteResearchLog("Console", message); } catch { }
     }
     private void LogError(string code, string operation, Exception error)
     {

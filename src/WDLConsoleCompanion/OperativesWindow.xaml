@@ -17,10 +17,10 @@
         <Button Content="Remove" Background="#402029" BorderBrush="#7A3342" Click="Remove_Click"/>
       </WrapPanel>
       <StackPanel><TextBlock Text="OPERATIVE STUDIO" FontSize="21" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}"/>
-        <TextBlock Text="Select an operative, then open a focused editor. Orange and red controls modify risky data." Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/></StackPanel>
+        <TextBlock Text="Double-click First name or Surname to edit it, then click Save changes. Select a row to open its focused editors." Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/></StackPanel>
     </DockPanel>
     <DataGrid x:Name="RosterGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
-              SelectionMode="Single" SelectionUnit="FullRow" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+              SelectionMode="Single" SelectionUnit="FullRow" HeadersVisibility="Column" GridLinesVisibility="Horizontal" MouseDoubleClick="RosterGrid_MouseDoubleClick"
               Background="{DynamicResource PanelBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource BorderBrush}"
               RowBackground="{DynamicResource RowBrush}" AlternatingRowBackground="{DynamicResource AlternateRowBrush}" HorizontalGridLinesBrush="{DynamicResource GridLineBrush}">
       <DataGrid.Resources>
@@ -29,8 +29,8 @@
       </DataGrid.Resources>
       <DataGrid.Columns>
         <DataGridTextColumn Header="#" Binding="{Binding Index}" IsReadOnly="True" Width="55"/>
-        <DataGridTextColumn Header="First name" Binding="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-        <DataGridTextColumn Header="Surname" Binding="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+        <DataGridTextColumn Header="First name (double-click)" Binding="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+        <DataGridTextColumn Header="Surname (double-click)" Binding="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
         <DataGridComboBoxColumn x:Name="AvailabilityColumn" Header="Availability" SelectedValueBinding="{Binding Availability, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Value" DisplayMemberPath="Label" Width="120"/>
         <DataGridComboBoxColumn x:Name="OriginColumn" Header="Origin" SelectedValueBinding="{Binding Origin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Value" DisplayMemberPath="Label" Width="145"/>
         <DataGridTextColumn Header="Operative ID" Binding="{Binding IdHex}" IsReadOnly="True" Width="190"/>
