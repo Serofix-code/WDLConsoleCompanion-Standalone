@@ -1,0 +1,58 @@
+[
+  {
+    "id": "system.operative.roster",
+    "kind": "system",
+    "name": "Operative roster traversal",
+    "summary": "Reads roster count and operative pointers from the captured operative-team-manager object.",
+    "confidence": "confirmed",
+    "status": "experimental",
+    "tags": ["npc", "operative", "roster"],
+    "builds": [{ "platform": "Windows x64", "distribution": "Steam", "module": "DuniaDemo_clang_64_dx11.dll", "moduleSha256": null, "observed": "2026-08-14", "notes": "Exact module hash still required." }],
+    "offsets": { "rosterCount": "0xE0", "rosterArray": "0x108", "operativeId": "0x1A0" },
+    "related": ["signature.operative.manager_capture", "system.census.name_resolution"],
+    "evidence": [{ "type": "readback", "reference": "src/WDLConsoleCompanion/Services/TrainerSession.cs", "notes": "Roster identity is revalidated before supported writes." }],
+    "unknowns": ["Ownership and lifetime rules outside the observed gameplay states."]
+  },
+  {
+    "id": "signature.operative.manager_capture",
+    "kind": "signature",
+    "name": "Operative manager capture site",
+    "summary": "Guarded AOB signature and expected instruction used to capture the operative-team-manager pointer.",
+    "confidence": "confirmed",
+    "status": "experimental",
+    "tags": ["hook", "operative", "signature"],
+    "builds": [{ "platform": "Windows x64", "distribution": "Steam", "module": "DuniaDemo_clang_64_dx11.dll", "moduleSha256": null, "observed": "2026-08-14", "notes": "Adopted hook reproduced in the observed session; hash pending." }],
+    "signature": "E8 ?? ?? ?? ?? 48 85 C0 74 1C 48 83 C6 10 48 8B 08",
+    "offsets": { "matchOffset": 17 },
+    "related": ["system.operative.roster"],
+    "evidence": [{ "type": "signature_scan", "reference": "src/WDLConsoleCompanion/config/trainer.json", "notes": "Runtime requires a unique match and expected original bytes before patching." }],
+    "unknowns": ["Compatibility with unobserved renderer and store builds."]
+  },
+  {
+    "id": "system.census.name_resolution",
+    "kind": "system",
+    "name": "Census localization name resolution",
+    "summary": "Resolves operative first-name and surname localization IDs through census/NPC structures.",
+    "confidence": "confirmed",
+    "status": "experimental",
+    "tags": ["census", "localization", "npc"],
+    "builds": [{ "platform": "Windows x64", "distribution": "Steam", "module": "DuniaDemo_clang_64_dx11.dll", "moduleSha256": null, "observed": "2026-08-14", "notes": "Exact module hash pending." }],
+    "related": ["system.operative.roster"],
+    "evidence": [{ "type": "runtime_observation", "reference": "src/WDLConsoleCompanion/Services/TrainerSession.cs", "notes": "Resolved IDs match visible roster names in the observed session." }],
+    "unknowns": ["Complete census object type names and ownership contract."]
+  },
+  {
+    "id": "system.camera.freecam",
+    "kind": "system",
+    "name": "True freecam camera control",
+    "summary": "Movable standalone freecam transform and safe write path have not yet been identified.",
+    "confidence": "unknown",
+    "status": "under_development",
+    "tags": ["camera", "freecam", "research"],
+    "builds": [{ "platform": "Windows x64", "distribution": "Steam", "module": "DuniaDemo_clang_64_dx11.dll", "moduleSha256": null, "observed": "2026-08-14", "notes": "Differential scanning in progress." }],
+    "signature": null,
+    "related": [],
+    "evidence": [{ "type": "runtime_observation", "reference": "research/notes/camera.md", "notes": "Candidate filtering has not produced a validated adjacent camera transform." }],
+    "unknowns": ["Camera object address", "Position and rotation layout", "Writer call site", "Thread requirement", "Safe reset behavior"]
+  }
+]

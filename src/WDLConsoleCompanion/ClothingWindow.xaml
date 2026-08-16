@@ -1,0 +1,38 @@
+<Window x:Class="WDLConsoleCompanion.ClothingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Clothing Shop Access" Width="620" Height="620" MinWidth="520" MinHeight="480"
+        Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource TextBrush}">
+  <Grid Margin="18">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel Margin="0,0,0,12">
+      <TextBlock Text="CLOTHING SHOP ACCESS - VERY EXPERIMENTAL / SUPER RISKY" FontSize="21" FontWeight="Bold" Foreground="#FF6678" TextWrapping="Wrap"/>
+      <TextBlock Margin="0,4,0,0" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"
+                 Text="Use the red reward button to submit every catalogued retail, DedSec, activity-reward, bundle, and owned-DLC clothing record, or spawn a shop where you are aiming. Each readable database record is sent separately on the game thread."/>
+      <Button x:Name="UnlockAllButton" Margin="0,12,0,0" Padding="12,9" HorizontalAlignment="Stretch" Background="#9A1833" Foreground="White"
+              Content="VERY EXPERIMENTAL — UNLOCK ALL 779 CLOTHING RECORDS" Click="UnlockAll_Click"/>
+      <ProgressBar x:Name="UnlockProgress" Height="7" Margin="0,7,0,0" Minimum="0" Maximum="1" Visibility="Collapsed"/>
+    </StackPanel>
+    <Border Grid.Row="1" Background="#402028" BorderBrush="#A94659" BorderThickness="1" CornerRadius="5" Padding="12" Margin="0,0,0,12">
+      <TextBlock Foreground="#FF9AAA" TextWrapping="Wrap" Text="Stand in active gameplay and aim at flat, clear ground a few metres away. Spawning another shop removes the previous shop created by this panel. Spawned shops are temporary and disappear after removal or a game restart."/>
+    </Border>
+    <Grid Grid.Row="2" Margin="0,0,0,8"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" ToolTip="Search shop names" Padding="9,6"/>
+      <TextBlock x:Name="ResultCount" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource MutedBrush}"/>
+    </Grid>
+    <ListBox Grid.Row="3" x:Name="ShopList" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Auto">
+      <ListBox.ItemTemplate><DataTemplate>
+        <Grid Margin="7,5"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <TextBlock Text="{Binding Name}" FontWeight="SemiBold"/>
+          <TextBlock Grid.Column="1" Text="CLOTHING SHOP" Foreground="{DynamicResource MutedBrush}" FontSize="10" Margin="12,0,0,0"/>
+        </Grid></DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <TextBlock Grid.Row="4" x:Name="StatusText" Margin="0,10,0,0" Foreground="{DynamicResource MutedBrush}" Text="Select one of the 34 clothing shops." TextWrapping="Wrap"/>
+    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+      <Button x:Name="RemoveButton" Content="Remove spawned shop" Click="Remove_Click" Margin="0,0,8,0"/>
+      <Button x:Name="CancelButton" Content="Cancel unlock" Click="Cancel_Click" Visibility="Collapsed" Margin="0,0,8,0"/>
+      <Button x:Name="SpawnButton" Content="Spawn selected shop" Click="Spawn_Click" Background="#6C182D"/>
+    </StackPanel>
+  </Grid>
+</Window>

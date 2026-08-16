@@ -1,0 +1,30 @@
+name: Tool bug
+description: Report a problem in the SDK tools or offline companion.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes: { label: Project version/commit }
+    validations: { required: true }
+  - type: input
+    id: build
+    attributes: { label: Game build/module, if relevant }
+  - type: textarea
+    id: steps
+    attributes: { label: Reproduction steps }
+    validations: { required: true }
+  - type: textarea
+    id: result
+    attributes: { label: Expected and actual result }
+    validations: { required: true }
+  - type: textarea
+    id: logs
+    attributes: { label: Redacted logs or error code }
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: I removed personal paths, save data, credentials, and proprietary files.
+          required: true

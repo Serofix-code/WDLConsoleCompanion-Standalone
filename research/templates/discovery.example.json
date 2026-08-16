@@ -1,0 +1,17 @@
+{
+  "id": "function.system.descriptive_name",
+  "kind": "function",
+  "name": "Descriptive name",
+  "summary": "What is directly known without speculation.",
+  "confidence": "unknown",
+  "status": "unresolved",
+  "tags": ["system"],
+  "builds": [{ "platform": "Windows x64", "distribution": "unknown", "module": "unknown", "moduleSha256": null, "observed": "2026-08-14", "notes": "Replace with tested build evidence." }],
+  "signature": null,
+  "parameters": [],
+  "returnType": null,
+  "threading": null,
+  "related": [],
+  "evidence": [{ "type": "unknown", "reference": "research/notes/example.md", "notes": "State the observation and reproduction method." }],
+  "unknowns": ["Calling convention", "Ownership", "Thread requirement"]
+}
