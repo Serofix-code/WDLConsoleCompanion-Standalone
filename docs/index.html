@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A console-first offline save companion for Watch Dogs: Legion.">
-  <title>WDL Console Companion</title><link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Unofficial Watch Dogs: Legion community SDK, research database, and offline modding tools.">
+  <title>Watch Dogs: Legion Community SDK</title><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav><a class="brand" href="#top">WDL<span>//</span>CC</a><div><a href="#features">Features</a><a href="#safety">Safety</a><a href="#docs">Docs</a></div></nav>
+  <nav><a class="brand" href="#top">WDL<span>//</span>SDK</a><div><a href="#status">Status</a><a href="#systems">Systems</a><a href="#contribute">Contribute</a></div></nav>
   <main id="top">
     <section class="hero">
-      <p class="eyebrow">OFFLINE · STANDALONE · SAFETY-FIRST</p>
-      <h1>Your Legion saves,<br><em>under your command.</em></h1>
-      <p class="lede">A real Windows command console for verified backups, safe restores, and a focused operative panel.</p>
-      <div class="actions"><a class="primary" href="#docs">Build the app</a><a class="secondary" href="#safety">Read the safety model</a></div>
-      <div class="terminal" aria-label="Example command console"><div class="dots">● ● ● <b>WDL CONSOLE</b></div><p><span>&gt;</span> op</p><p class="output ok">✓ Operative panel opened.</p><p><span>&gt;</span> backup</p><p class="output ok">✓ Backup created and SHA-256 verified.</p><p><span>&gt;</span><i></i></p></div>
+      <p class="eyebrow">UNOFFICIAL · COMMUNITY-MAINTAINED · EVIDENCE-FIRST</p>
+      <h1>Map Legion.<br><em>Share the evidence.</em></h1>
+      <p class="lede">An independently created SDK reference, searchable research database, validation toolchain, and offline Windows research companion for Watch Dogs: Legion mod developers.</p>
+      <div class="actions"><a class="primary" href="../README.md">Read the repository guide</a><a class="secondary" href="generated/RESEARCH_INDEX.md">Browse the research index</a></div>
+      <div class="terminal" aria-label="Database query example"><div class="dots">● ● ● <b>COMMUNITY RESEARCH</b></div><p><span>&gt;</span> python tools/query_database.py "operative roster"</p><p class="output ok">✓ CONFIRMED system.operative.roster</p><p><span>&gt;</span> python tools/query_database.py camera</p><p class="output">UNKNOWN system.camera.freecam</p></div>
     </section>
-    <section id="features" class="grid"><article><b>01</b><h2>Real console</h2><p>Use a native Windows console and type <code>op</code> when you want the graphical operative panel.</p></article><article><b>02</b><h2>Combined launch</h2><p>A Desktop shortcut starts the companion and launches the Steam game in one step.</p></article><article><b>03</b><h2>Verified backups</h2><p>Every backup has a SHA-256 manifest. Restore checks integrity before replacing anything.</p></article></section>
-    <section id="safety" class="split"><div><p class="eyebrow">OFFLINE BY DESIGN</p><h2>Useful without pretending.</h2></div><div><p>No external trainer or table is opened. Unsupported live memory and proprietary save edits remain visibly disabled instead of reporting false success.</p><ul><li>Real console interface</li><li>No external trainer process</li><li>Game-running detection</li><li>Checksummed, atomic save utilities</li></ul></div></section>
-    <section id="docs" class="docs"><p class="eyebrow">QUICK START</p><h2>Open. Build. Command.</h2><ol><li>Install Visual Studio 2022 with .NET desktop development.</li><li>Open <code>WDLConsoleCompanion.sln</code>.</li><li>Press <kbd>F5</kbd>, then type <code>help</code>.</li></ol><p class="note">For a single executable, publish with the included <code>SingleFile</code> profile. The app targets .NET 8 on Windows.</p></section>
+    <section id="status" class="grid"><article><b>CONFIRMED</b><h2>Reproduced</h2><p>Direct evidence on a named build with validation.</p></article><article><b>INFERRED</b><h2>Investigating</h2><p>Plausible mappings remain clearly separated from stable facts.</p></article><article><b>UNKNOWN</b><h2>Honest gaps</h2><p>Missing signatures and contracts stay unresolved instead of being fabricated.</p></article></section>
+    <section id="systems" class="split"><div><p class="eyebrow">CURRENT COVERAGE</p><h2>Research that tools can consume.</h2></div><div><p>Operatives, census names, events, perks, metadata, appearance, contracts, signatures, memory tools, Lua actions, shops, teleport, and active camera research.</p><ul><li>Machine-readable records and catalogs</li><li>Build-specific confidence and evidence</li><li>Schema and duplicate validation</li><li>Game-independent search and generated docs</li></ul></div></section>
+    <section id="contribute" class="docs"><p class="eyebrow">CONTRIBUTE</p><h2>Unknown is a valid result.</h2><ol><li>Copy the discovery template.</li><li>Record the exact tested build and non-proprietary evidence.</li><li>Run the validation scripts.</li><li>Open a research or correction issue.</li></ol><p class="note">Unofficial community project. Not affiliated with or endorsed by Ubisoft. Do not upload game binaries, assets, saves, credentials, or proprietary source. A project license still needs to be selected.</p></section>
   </main>
-  <footer><span>WDL Console Companion</span><span>Unofficial · Not affiliated with Ubisoft</span></footer>
+  <footer><span>Watch Dogs: Legion Community SDK</span><span>Unofficial · Evidence-first · Offline research</span></footer>
 </body></html>

@@ -1,0 +1,25 @@
+{
+  "source": "https://gist.github.com/reg2k",
+  "purpose": "Readable reference names for perks, tags, clothing, metadata, contracts, characters, and weapon abilities.",
+  "runtimeSafety": "Catalog matches are display/search data only; they are not a memory-write authorization.",
+  "catalogs": [
+    "wdl_perks.txt",
+    "wdl_tags.txt",
+    "wdl_prismactorlist.txt",
+    "wdl_contracts_attendances.txt",
+    "wdl_clothing_headwear.txt",
+    "wdl_clothing_innerwear.txt",
+    "wdl_clothing_legwear.txt",
+    "wdl_clothing_outerwear.txt",
+    "wdl_clothing_outfits.txt",
+    "wdl_clothing_wolfskin.txt",
+    "wdl_character_models.txt",
+    "wdl_charactercard.txt",
+    "wdl_characterdeck.txt",
+    "wdl_profiler_metadata.txt",
+    "wdl_names.txt",
+    "wdl_surnames.txt",
+    "wdl_items_dump.txt",
+    "wdl_weapon_ability_ids.txt"
+  ]
+}

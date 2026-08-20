@@ -1,0 +1,13 @@
+{
+  "formatVersion": 1,
+  "catalogs": [
+    { "id": "events", "path": "src/WDLConsoleCompanion/config/events.json", "format": "id-label-map", "records": 12324, "confidence": "inferred" },
+    { "id": "perks", "path": "src/WDLConsoleCompanion/config/perks.json", "format": "perk-array", "records": 373, "confidence": "inferred" },
+    { "id": "appearance", "path": "src/WDLConsoleCompanion/config/appearance.json", "format": "packed-field-array", "records": 15, "confidence": "inferred" },
+    { "id": "metadata", "path": "src/WDLConsoleCompanion/config/metadata.json", "format": "field-option-map", "records": 24, "confidence": "inferred" },
+    { "id": "contracts", "path": "src/WDLConsoleCompanion/config/contracts.json", "format": "contract-catalog", "records": null, "confidence": "inferred" },
+    { "id": "localization", "path": "src/WDLConsoleCompanion/config/localization.json", "format": "localization-catalog", "records": null, "confidence": "inferred" },
+    { "id": "clothing", "path": "src/WDLConsoleCompanion/config/clothing.json", "format": "clothing-catalog", "records": 813, "confidence": "inferred" },
+    { "id": "signatures", "path": "src/WDLConsoleCompanion/config/trainer.json", "format": "trainer-config", "records": null, "confidence": "confirmed" }
+  ]
+}

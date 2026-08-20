@@ -15,6 +15,7 @@ internal sealed class TrainerSession : IDisposable
     private readonly List<AppearanceFieldDefinition> _appearanceCatalog;
     private readonly ContractCatalog _contractCatalog;
     private readonly Dictionary<string, List<CheatPatchConfig>> _cheatPatches;
+    private readonly ClothingCatalog _clothingCatalog;
     private RemoteProcess? _remote;
     private InlineHook? _hook;
     private CheatManager? _cheats;
@@ -23,12 +24,15 @@ internal sealed class TrainerSession : IDisposable
     private readonly HashSet<string> _luaToggles = new(StringComparer.OrdinalIgnoreCase);
     private readonly object _luaGate = new();
     private readonly object _teleportGate = new();
+    private readonly object _researchLogGate = new();
+    private readonly string _researchLogPath;
     private ProcessModule? _duniaModule;
     private ulong _persistentHumanFunction;
     private ulong _allocatorFunction;
     private ulong _censusGlobal;
     internal bool IsAttached => _remote is not null;
     internal int? ProcessId => _remote?.Process.Id;
+    internal string ResearchLogPath => _researchLogPath;
     internal bool IsAttachedProcessAlive
     {
         get
@@ -65,6 +69,10 @@ internal sealed class TrainerSession : IDisposable
 
     internal TrainerSession(string configDirectory)
     {
+        string researchDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WDLConsoleCompanion", "ResearchLogs");
+        Directory.CreateDirectory(researchDirectory);
+        _researchLogPath = Path.Combine(researchDirectory, $"WDL-research-{DateTime.Now:yyyyMMdd-HHmmss}-pid{Environment.ProcessId}.csv");
+        File.WriteAllText(_researchLogPath, "TimestampUtc,Category,Phase,Axis,Direction,ScanType,Candidates,BytesScanned,ElapsedMs,ExportPath,Message\r\n");
         string configPath = Path.Combine(configDirectory, "trainer.json");
         _config = JsonSerializer.Deserialize<TrainerConfig>(File.ReadAllText(configPath), new JsonSerializerOptions
         {
@@ -79,6 +87,7 @@ internal sealed class TrainerSession : IDisposable
         _appearanceCatalog = JsonSerializer.Deserialize<List<AppearanceFieldDefinition>>(File.ReadAllText(Path.Combine(configDirectory, "appearance.json")), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
         _contractCatalog = JsonSerializer.Deserialize<ContractCatalog>(File.ReadAllText(Path.Combine(configDirectory, "contracts.json")), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new();
         _cheatPatches = JsonSerializer.Deserialize<Dictionary<string, List<CheatPatchConfig>>>(File.ReadAllText(Path.Combine(configDirectory, "cheats.json")), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
+        _clothingCatalog = JsonSerializer.Deserialize<ClothingCatalog>(File.ReadAllText(Path.Combine(configDirectory, "clothing.json")), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new();
     }
 
     internal string Attach()
@@ -234,7 +243,26 @@ internal sealed class TrainerSession : IDisposable
         Report("Memory Scanner opened. Scans are bounded and operate only on readable engine or writable game regions.");
         return scanner;
     }
+    internal CameraMotionScanner CreateCameraMotionScanner()
+    {
+        CameraMotionScanner scanner = new(RequireRemote());
+        Report("Freecam full-memory differential scanner created. No game memory will be written during calibration.");
+        return scanner;
+    }
     internal void ReportMemoryScan(string message) => Report(message);
+    internal void WriteResearchLog(string category, string message, string phase = "", string axis = "", int? direction = null,
+        string scanType = "", int? candidates = null, ulong? bytesScanned = null, double? elapsedMs = null, string exportPath = "")
+    {
+        static string Csv(string value) => "\"" + value.Replace("\"", "\"\"").Replace("\r", " ").Replace("\n", " ") + "\"";
+        string line = string.Join(',',
+            Csv(DateTime.UtcNow.ToString("O")), Csv(category), Csv(phase), Csv(axis),
+            direction?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "",
+            Csv(scanType), candidates?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "",
+            bytesScanned?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "",
+            elapsedMs?.ToString("F3", System.Globalization.CultureInfo.InvariantCulture) ?? "",
+            Csv(exportPath), Csv(message));
+        lock (_researchLogGate) File.AppendAllText(_researchLogPath, line + "\r\n");
+    }
 
     private TeleportManager RequireTeleport()
     {
@@ -283,6 +311,50 @@ internal sealed class TrainerSession : IDisposable
     internal string AddEto() { RequireLuaQueue().Enqueue("TriggerRuleSmithRule('589221860', '', GetLocalPlayerEntityId())"); Report("SUPER RISKY: queued +1000 ETO through RuleSmith."); return "+1000 ETO queued. Check the in-game balance in a moment."; }
     internal string AddTechPoints() { RequireLuaQueue().Enqueue("TriggerRuleSmithRule('189922678', '', GetLocalPlayerEntityId())"); Report("SUPER RISKY: queued +10 tech points through RuleSmith."); return "+10 tech points queued. Check the in-game balance in a moment."; }
 
+    internal IReadOnlyList<ClothingShopDefinition> ClothingShops => _clothingCatalog.Shops;
+    internal int ClothingRewardCount => _clothingCatalog.RewardRecords.Count;
+
+    internal async Task<ClothingUnlockResult> UnlockAllClothingAsync(IProgress<(int Done, int Total, string Group)>? progress, CancellationToken cancellationToken)
+    {
+        if (!IsAttachedProcessAlive) throw new InvalidOperationException("Attach to the running game before unlocking clothing.");
+        int total = ClothingRewardCount;
+        if (total == 0) throw new InvalidOperationException("The clothing reward catalog is empty.");
+        Report($"SUPER RISKY: starting readable-name clothing reward pass for all {total} catalogued records.");
+        GameLuaQueue queue = RequireLuaQueue();
+        int done = 0;
+        foreach (ClothingRewardRecord record in _clothingCatalog.RewardRecords)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (string.IsNullOrWhiteSpace(record.Name) || !record.Name.StartsWith(record.Database + ".", StringComparison.Ordinal))
+                throw new InvalidOperationException($"Invalid clothing reward record at catalog position {done + 1}.");
+            await queue.EnqueueRewardAsync(record.Name, displayFeedback: done == 0, cancellationToken).ConfigureAwait(false);
+            done++;
+            progress?.Report((done, total, record.Label));
+        }
+        Report($"SUPER RISKY: submitted {done} readable clothing database records on the game thread. Switch operatives and reopen the wardrobe to refresh ownership.");
+        return new ClothingUnlockResult(done);
+    }
+
+    internal async Task<string> SpawnClothingShopAsync(ClothingShopDefinition shop, CancellationToken cancellationToken)
+    {
+        if (!IsAttachedProcessAlive) throw new InvalidOperationException("Attach to the running game before spawning a shop.");
+        if (!_clothingCatalog.Shops.Any(candidate => candidate.Archetype.Equals(shop.Archetype, StringComparison.OrdinalIgnoreCase)))
+            throw new InvalidOperationException("The selected clothing shop is not in the configured catalog.");
+        if (!Guid.TryParse(shop.Archetype.Trim('{', '}'), out _)) throw new InvalidOperationException("The selected clothing shop has an invalid archetype ID.");
+        string script = $"if wdlccShop then pcall(RemoveEntity,wdlccShop)end;l=GetReticleHitLocation();wdlccShop=SpawnEntityFromArchetype('{shop.Archetype}',l[1],l[2],l[3],0,0,180+GetEntityAngle(GetLocalPlayerEntityId(),2))";
+        await RequireLuaQueue().EnqueuePacedAsync(script, cancellationToken).ConfigureAwait(false);
+        Report($"SUPER RISKY: spawned the {shop.Name} clothing shop at the reticle; any previous companion-spawned shop was removed.");
+        return $"{shop.Name} spawned ({shop.Archetype}). Walk to its interaction point to browse that shop's clothing.";
+    }
+
+    internal async Task<string> RemoveSpawnedClothingShopAsync(CancellationToken cancellationToken)
+    {
+        if (!IsAttachedProcessAlive) throw new InvalidOperationException("The game process is not attached and running.");
+        await RequireLuaQueue().EnqueuePacedAsync("if wdlccShop then pcall(RemoveEntity,wdlccShop);wdlccShop=nil end", cancellationToken).ConfigureAwait(false);
+        Report("Removed the companion-spawned clothing shop.");
+        return "The companion-spawned clothing shop was removed.";
+    }
+
     private static readonly Dictionary<string, (string Enable, string Disable, string Label)> LuaToggleScripts = new(StringComparer.OrdinalIgnoreCase)
     {
         ["immortal"] = ("SetPawnImmuneToDeath(GetLocalPlayerEntityId(),1)", "SetPawnImmuneToDeath(GetLocalPlayerEntityId(),0)", "Immortal Mode"),
@@ -305,13 +377,20 @@ internal sealed class TrainerSession : IDisposable
     internal string RunGameAction(string name)
     {
         string normalized = CheatManager.Normalize(name);
+        if (normalized is "spawnracecar" or "spawnshop")
+        {
+            (string Script, string Result) spawn = normalized == "spawnracecar"
+                ? ("if wdlccCar then pcall(RemoveEntity,wdlccCar)end;l=GetReticleHitLocation();wdlccCar=SpawnEntityFromArchetype('{B785212C-DE03-4049-8FD7-45E9130C4B2F}',l[1],l[2],l[3],0,0,0)", "Racecar spawned at the reticle.")
+                : ("if wdlccDedSec then pcall(RemoveEntity,wdlccDedSec)end;l=GetReticleHitLocation();wdlccDedSec=SpawnEntityFromArchetype('{5991467D-8E99-431F-AE1B-724D46EDE1E9}',l[1],l[2],l[3],0,0,180+GetEntityAngle(GetLocalPlayerEntityId(),2))", "DedSec shop spawned at the reticle.");
+            RequireLuaQueue().EnqueuePacedAsync(spawn.Script, CancellationToken.None).GetAwaiter().GetResult();
+            Report($"SUPER RISKY: {spawn.Result} Paced idempotent spawn sequence handed off.");
+            return spawn.Result;
+        }
         (string Script, string Result) action = normalized switch
         {
             "eto" => ("TriggerRuleSmithRule('589221860','',GetLocalPlayerEntityId())", "+1000 ETO queued."),
             "techpoints" => ("TriggerRuleSmithRule('189922678','',GetLocalPlayerEntityId())", "+10 tech points queued."),
             "endchase" => ("FelonyEndChase(GetLocalPlayerEntityId())", "End chase queued."),
-            "spawnracecar" => ("l=GetReticleHitLocation();SpawnEntityFromArchetype('{B785212C-DE03-4049-8FD7-45E9130C4B2F}',l[1],l[2],l[3],0,0,0)", "Racecar spawn queued at the reticle."),
-            "spawnshop" => ("l=GetReticleHitLocation();SpawnEntityFromArchetype('{5991467D-8E99-431F-AE1B-724D46EDE1E9}',l[1],l[2],l[3],0,0,180+GetEntityAngle(GetLocalPlayerEntityId(),2))", "DedSec shop spawn queued at the reticle."),
             "distractall" => ("h=CAIAgentManager_GetInstance():GetAIAgentsOfGroupFromLUA_v2('Human',0,'',0,0);for i,v in ipairs(h)do TryTriggerHack('Distract',GetLocalPlayerEntityId(),v)end", "Distract-all queued."),
             "disruptall" => ("h=CAIAgentManager_GetInstance():GetAIAgentsOfGroupFromLUA_v2('Human',0,'',0,0);for i,v in ipairs(h)do TryTriggerHack('DisruptComm',GetLocalPlayerEntityId(),v)end", "Disrupt-all queued."),
             _ => throw new InvalidOperationException($"Unknown game action '{name}'.")
@@ -732,9 +811,25 @@ internal sealed class TrainerSession : IDisposable
         if (cached != 0) return cached;
         var remote = RequireRemote();
         var module = _duniaModule ?? throw new InvalidOperationException("Dunia module is unavailable.");
-        ulong call = PatternScanner.FindUnique(remote, module, pattern) + (ulong)callOffset;
-        int displacement = remote.Read<int>(call + 1);
-        return checked((ulong)((long)call + 5 + displacement));
+        List<ulong> matches = PatternScanner.FindAll(remote, module, pattern, 128);
+        if (matches.Count == 0) throw new InvalidOperationException($"Signature not found in {module.ModuleName}: {pattern}");
+        var targets = new HashSet<ulong>();
+        foreach (ulong match in matches)
+        {
+            ulong call = checked(match + (ulong)callOffset);
+            if (remote.Read<byte>(call) != 0xE8) continue;
+            int displacement = remote.Read<int>(call + 1);
+            ulong target = checked((ulong)((long)call + 5 + displacement));
+            if (remote.IsRangeReadable(target, 1)) targets.Add(target);
+        }
+        if (targets.Count == 1)
+        {
+            ulong target = targets.Single();
+            if (matches.Count > 1) Report($"Resolved {matches.Count} matching call sites to one shared game function at 0x{target:X}.");
+            return target;
+        }
+        if (targets.Count == 0) throw new InvalidOperationException($"Signature matches in {module.ModuleName}, but none resolve to a readable relative-call target: {pattern}");
+        throw new InvalidOperationException($"Signature call sites resolve to {targets.Count} different functions in {module.ModuleName}; refusing to guess: {pattern}");
     }
 
     internal void RemoveOperative(OperativeRecord selected)
@@ -881,3 +976,4 @@ internal sealed class TrainerSession : IDisposable
 internal sealed record AdvancedFieldDescriptor(string Key, string DisplayName, string Scope, int Offset, int Length, string Description);
 
 internal sealed record PerkSnapshot(IReadOnlyList<uint> Ids, int Capacity, bool Inline);
+internal readonly record struct ClothingUnlockResult(int Processed);

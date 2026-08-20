@@ -1,5 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using WDLConsoleCompanion.Models;
 using WDLConsoleCompanion.Services;
 
@@ -32,6 +35,17 @@ public partial class OperativesWindow : Window
     }
 
     private async void Refresh_Click(object sender, RoutedEventArgs e) => await RefreshAsync();
+    private void RosterGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        DependencyObject? source = e.OriginalSource as DependencyObject;
+        while (source is not null and not DataGridCell) source = VisualTreeHelper.GetParent(source);
+        if (source is not DataGridCell cell || cell.Column.DisplayIndex is not (1 or 2)) return;
+        RosterGrid.CurrentCell = new DataGridCellInfo(cell);
+        RosterGrid.SelectedItem = cell.DataContext;
+        RosterGrid.BeginEdit();
+        e.Handled = true;
+        Footer.Text = $"Editing {cell.Column.Header}. Enter an exact game name, press Enter, then click Save changes.";
+    }
     private async void Save_Click(object sender, RoutedEventArgs e)
     {
         if (RosterGrid.SelectedItem is not OperativeRecord row) { MessageBox.Show("Select an operative first."); return; }
@@ -81,6 +95,7 @@ public partial class OperativesWindow : Window
         catch (Exception ex) { string error = _session.ReportError("WDL-EVENT-000", "Recent Events editor could not be opened", ex); MessageBox.Show(error, "Recent Events stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
     private void Appearance_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new AppearanceWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
+    private void Accent_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new AccentWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
     private void Contracts_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new ContractsWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
     private void SetBusy(bool busy, string? text = null) { RosterGrid.IsEnabled = !busy; if (text is not null) Footer.Text = text; }
 }

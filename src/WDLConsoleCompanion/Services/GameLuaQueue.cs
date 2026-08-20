@@ -13,6 +13,8 @@ internal sealed class GameLuaQueue : IDisposable
 
     private GameLuaQueue(RemoteProcess remote, CodeCaveHook hook) { _remote = remote; _hook = hook; }
 
+    internal ulong PendingCount => _remote.Read<ulong>(_hook.DataAddress);
+
     internal static GameLuaQueue Install(RemoteProcess remote, ProcessModule module)
     {
         ulong luaMatch = PatternScanner.FindUnique(remote, module, "48 8B 0D ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 45 31 C0 E8 ?? ?? ?? ?? 80 3D ?? ?? ?? ?? 00 74");
@@ -58,6 +60,11 @@ internal sealed class GameLuaQueue : IDisposable
 
     internal void Enqueue(string script)
     {
+        _ = EnqueueTracked(script);
+    }
+
+    private ulong EnqueueTracked(string script)
+    {
         byte[] text = Encoding.UTF8.GetBytes(script);
         if (text.Length >= SlotSize) throw new InvalidOperationException("The game script command is too long for the safe queue slot.");
         lock (_gate)
@@ -65,13 +72,57 @@ internal sealed class GameLuaQueue : IDisposable
         {
             ulong count = _remote.Read<ulong>(_hook.DataAddress);
             if (count >= Capacity) throw new InvalidOperationException("The game script queue is full; wait a moment and try again.");
+            ulong completed = _remote.Read<ulong>(_hook.DataAddress + 0x18);
             ulong write = _remote.Read<ulong>(_hook.DataAddress + 0x10);
             if (write >= Capacity) throw new InvalidOperationException("The game script queue index is invalid.");
             byte[] slot = new byte[SlotSize]; text.CopyTo(slot, 0);
             _remote.WriteBytes(_hook.DataAddress + BuffersOffset + write * SlotSize, slot);
             _remote.Write(_hook.DataAddress + 0x10, (write + 1) % Capacity);
             _remote.Write(_hook.DataAddress, count + 1);
+            return checked(completed + count + 1);
         }
+    }
+
+    private async Task WaitForHandoffAsync(ulong completionTarget, CancellationToken cancellationToken, DateTime deadline)
+    {
+        while (DateTime.UtcNow < deadline)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (_remote.Read<ulong>(_hook.DataAddress + 0x18) >= completionTarget) return;
+            await Task.Delay(25, cancellationToken).ConfigureAwait(false);
+        }
+        throw new TimeoutException("The game did not accept the queued action in time. Return to active gameplay and try again.");
+    }
+
+    internal async Task EnqueuePacedAsync(string script, CancellationToken cancellationToken, int submissions = 3)
+    {
+        if (submissions is < 1 or > 5) throw new ArgumentOutOfRangeException(nameof(submissions));
+        for (int i = 0; i < submissions; i++)
+        {
+            DateTime deadline = DateTime.UtcNow.AddSeconds(10);
+            ulong target = EnqueueTracked(script);
+            await WaitForHandoffAsync(target, cancellationToken, deadline).ConfigureAwait(false);
+            if (i + 1 < submissions) await Task.Delay(750, cancellationToken).ConfigureAwait(false);
+        }
+        // Allow the world/entity update that follows the final handoff to become visible.
+        await Task.Delay(750, cancellationToken).ConfigureAwait(false);
+    }
+
+    internal async Task EnqueueHandoffAsync(string script, CancellationToken cancellationToken)
+    {
+        ulong target = EnqueueTracked(script);
+        await WaitForHandoffAsync(target, cancellationToken, DateTime.UtcNow.AddSeconds(10)).ConfigureAwait(false);
+        await Task.Delay(50, cancellationToken).ConfigureAwait(false);
+    }
+
+    internal Task EnqueueRewardAsync(string recordName, bool displayFeedback, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(recordName) || recordName.Length > 180 || recordName.Contains('\'') || recordName.Contains('\\'))
+            throw new ArgumentException("The clothing database record name is invalid.", nameof(recordName));
+        // Legion's native reward binding ends the current Lua command after accepting a readable ItemDB
+        // record, so code placed after ExecuteReward_V2 is not guaranteed to run. Track the game-thread
+        // handoff itself and send every reward in a separate command.
+        return EnqueueHandoffAsync($"ExecuteReward_V2(GetLocalPlayerEntityId(),'{recordName}',{(displayFeedback ? 1 : 0)})", cancellationToken);
     }
 
     internal FacingQuery QueryFacing()

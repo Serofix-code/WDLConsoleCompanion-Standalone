@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/wdl-community-sdk/research-record.schema.json",
+  "title": "Watch Dogs Legion community research record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "name", "summary", "confidence", "builds", "evidence", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$" },
+    "kind": { "enum": ["function", "event", "lua_api", "command", "ui", "type", "enum", "hash", "system", "signature", "offset", "call_chain"] },
+    "name": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "confidence": { "enum": ["confirmed", "strongly_inferred", "inferred", "unknown"] },
+    "status": { "enum": ["usable", "experimental", "under_development", "unresolved", "deprecated"] },
+    "tags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "builds": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["platform", "distribution", "module", "moduleSha256", "observed"],
+        "properties": {
+          "platform": { "type": "string" }, "distribution": { "type": "string" },
+          "module": { "type": "string" },
+          "moduleSha256": { "type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$" },
+          "observed": { "type": "string", "format": "date" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "signature": { "type": ["string", "null"] },
+    "offsets": { "type": "object", "additionalProperties": { "type": ["integer", "string", "null"] } },
+    "parameters": { "type": "array", "items": { "type": "object" } },
+    "returnType": { "type": ["string", "null"] },
+    "threading": { "type": ["string", "null"] },
+    "related": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "evidence": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["type", "reference", "notes"],
+        "properties": {
+          "type": { "enum": ["runtime_observation", "signature_scan", "readback", "call_site", "string_reference", "cross_reference", "unknown"] },
+          "reference": { "type": "string" }, "notes": { "type": "string" }
+        }
+      }
+    },
+    "unknowns": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,4 +1,4 @@
-<Window Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource TextBrush}" x:Class="WDLConsoleCompanion.MainWindow"
+﻿<Window Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource TextBrush}" x:Class="WDLConsoleCompanion.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="WDL Console Companion" Width="960" Height="620" MinWidth="700" MinHeight="420"
@@ -12,6 +12,9 @@
         <Button Content="Scanner" Click="ScannerButton_Click"/>
         <Button Content="Shortcuts" Click="ShortcutsButton_Click"/>
         <Button Content="Settings" Click="SettingsButton_Click"/>
+        <Button Content="Hooks" Click="HookLabButton_Click"/>
+        <Button Content="Game + Audio" Click="GameAudioButton_Click"/>
+        <Button Content="Game Speed" Click="GameSpeedButton_Click"/>
         <Button x:Name="ManualInjectButton" Content="Manual Inject" Click="ManualInjectButton_Click"/>
       </WrapPanel>
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -42,3 +45,4 @@
     </Grid>
   </Grid>
 </Window>
+
