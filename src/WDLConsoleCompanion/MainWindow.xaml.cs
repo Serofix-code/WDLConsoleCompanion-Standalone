@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -54,7 +54,7 @@ public partial class MainWindow : Window
         };
     }
 
-    private async void CommandInput_KeyDown(object sender, KeyEventArgs e)
+    private async void CommandInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
         if (e.Key != Key.Enter) return;
         string command = CommandInput.Text.Trim().ToLowerInvariant();
@@ -272,7 +272,7 @@ public partial class MainWindow : Window
         int? readyPid = _session.ReadyTargetProcessId();
         if (readyPid is null)
         {
-            if (!_gameDetected) { _gameDetected = true; Log("WatchDogsLegion.exe detected; waiting for the main engine DLL…"); }
+            if (!_gameDetected) { _gameDetected = true; Log("WatchDogsLegion.exe detected; waiting for the main engine DLLâ€¦"); }
             return;
         }
         if (_automaticInjectionPid != readyPid)
@@ -281,7 +281,7 @@ public partial class MainWindow : Window
             int delay = ((App)Application.Current).Settings.AutoInjectDelaySeconds;
             _automaticInjectionReadyUtc = DateTime.UtcNow.AddSeconds(delay);
             _gameDetected = true;
-            Log(((App)Application.Current).Settings.AutoInject ? $"Main game process and Dunia engine ready (PID {readyPid}); automatic injection in {delay} seconds…" : $"Main game process and Dunia engine ready (PID {readyPid}); auto-inject is disabled.");
+            Log(((App)Application.Current).Settings.AutoInject ? $"Main game process and Dunia engine ready (PID {readyPid}); automatic injection in {delay} secondsâ€¦" : $"Main game process and Dunia engine ready (PID {readyPid}); auto-inject is disabled.");
             return;
         }
         if (!((App)Application.Current).Settings.AutoInject) return;
@@ -289,7 +289,7 @@ public partial class MainWindow : Window
         if (!_gameDetected)
         {
             _gameDetected = true;
-            Log("WatchDogsLegion.exe detected; attempting automatic injection…");
+            Log("WatchDogsLegion.exe detected; attempting automatic injectionâ€¦");
         }
         await TryAttachAsync(manual: false);
     }
@@ -311,7 +311,7 @@ public partial class MainWindow : Window
         ManualInjectButton.IsEnabled = false;
         try
         {
-            if (manual) Log("Manual injection requested…");
+            if (manual) Log("Manual injection requestedâ€¦");
             string result = await Task.Run(_session.Attach);
             Log((manual ? "Manual injection successful. " : "Automatic injection successful. ") + result);
             _suppressAutoInjectUntilGameExit = false;
@@ -349,7 +349,7 @@ public partial class MainWindow : Window
     }
     private void UpdateStatus()
     {
-        StatusText.Text = _session.IsAttached ? $"ATTACHED · PID {_session.ProcessId}" : "DETACHED";
+        StatusText.Text = _session.IsAttached ? $"ATTACHED Â· PID {_session.ProcessId}" : "DETACHED";
         StatusDot.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_session.IsAttached ? "#39D98A" : "#657083"));
     }
     private void Window_Closing(object? sender, CancelEventArgs e)
@@ -363,4 +363,42 @@ public partial class MainWindow : Window
         }
         catch (Exception ex) { MessageBox.Show(ex.Message, "Cleanup warning", MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
-}
+
+    private async void HookLabButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!_session.IsAttached) await TryAttachAsync(manual: true);
+        if (_session.IsAttached) new HookLabWindow(_session) { Owner = this }.Show();
+    }
+
+    private async void GameAudioButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!_session.IsAttached && _session.TargetProcessIsRunning()) await TryAttachAsync(manual: true);
+        new GameFileAudioLabWindow(_session) { Owner = this }.Show();
+    }
+
+    private async void GameSpeedButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!_session.IsAttached) await TryAttachAsync(manual: true);
+        if (_session.IsAttached) new GameSpeedWindow(_session) { Owner = this }.Show();
+    }
+
+    internal async Task StopAllHooksFromLabAsync()
+    {
+        _suppressAutoInjectUntilGameExit = true;
+        _operatives?.Close();
+        try { Log(await Task.Run(_session.Detach)); }
+        catch (Exception ex) { LogError("WDL-HOOK-STOP-001", "Stopping hooks failed", ex); }
+        UpdateStatus();
+        Log("All Companion-owned hooks/patches stopped. Auto-inject is paused until WDL exits; use Reattach in Hook Lab to start again now.");
+    }
+
+    internal async Task ReattachFromLabAsync()
+    {
+        _suppressAutoInjectUntilGameExit = false;
+        if (_session.IsAttached)
+        {
+            try { Log(await Task.Run(_session.Detach)); } catch { }
+        }
+        await TryAttachAsync(manual: true);
+    }}
+

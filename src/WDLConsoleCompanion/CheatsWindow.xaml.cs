@@ -33,7 +33,7 @@ public partial class CheatsWindow : Window
         new("xp", "Add Online XP", "Online seasonal account progression; unavailable in single-player/offline mode", "ONLINE ONLY", false),
         new("freecam", "Freecam Lab", "Guided camera-memory calibration; movement remains locked until a transform is validated", "VERY EXPERIMENTAL"),
         new("teleport", "Teleport / Waypoint / Forward", "Player, coordinate, waypoint, and movement-forward tools", "SUPER RISKY"),
-        new("noclip", "Noclip / Fly", "No verified collision/physics signature outside Legion ScriptHook", "SUPER RISKY", false),
+        new("noclip", "Noclip / Fly (Phase Fly)", "Experimental coordinate-based movement; does not disable collision and may cause falls", "SUPER RISKY"),
         new("recruit", "Recruit Any NPC", "Requires verified game-thread recruitment and ownership calls", "SUPER RISKY", false),
         new("clothes", "Clothing Unlock + Shop Access", "Very experimental bulk reward pass, plus 34 working temporary shop spawns", "VERY EXPERIMENTAL"),
         new("range", "Infinite Mind-Control Range", "No separate verified mind-control range signature in the local build", "SUPER RISKY", false),
@@ -59,6 +59,7 @@ public partial class CheatsWindow : Window
         if (name == "teleport") { TeleportWindow.OpenFor(_session, this); return; }
         if (name == "clothes") { ClothingWindow.OpenFor(_session, this); return; }
         if (name == "freecam") { FreecamWindow.OpenFor(_session, this); return; }
+        if (name == "noclip") { FreecamWindow.OpenFor(_session, this); return; }
         if (row is { IsAction: true })
         {
             CheatItems.IsEnabled = false;

@@ -13,6 +13,8 @@ internal sealed class GameLuaQueue : IDisposable
 
     private GameLuaQueue(RemoteProcess remote, CodeCaveHook hook) { _remote = remote; _hook = hook; }
 
+    internal ulong PendingCount => _remote.Read<ulong>(_hook.DataAddress);
+
     internal static GameLuaQueue Install(RemoteProcess remote, ProcessModule module)
     {
         ulong luaMatch = PatternScanner.FindUnique(remote, module, "48 8B 0D ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 45 31 C0 E8 ?? ?? ?? ?? 80 3D ?? ?? ?? ?? 00 74");

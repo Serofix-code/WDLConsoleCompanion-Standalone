@@ -2,6 +2,8 @@ using System.Windows;
 using System.Media;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Threading;
+using System.Windows.Input;
 using WDLConsoleCompanion.Services;
 
 namespace WDLConsoleCompanion;
@@ -10,6 +12,7 @@ public partial class FreecamWindow : Window
 {
     private static readonly Dictionary<TrainerSession, WeakReference<FreecamWindow>> OpenWindows = [];
     private readonly TrainerSession _session;
+    private readonly DispatcherTimer _candidateMonitor;
     private MemoryScannerWindow? _scanner;
     private CameraMotionScanner? _cameraScanner;
     private CancellationTokenSource? _calibrationCancellation;
@@ -20,6 +23,10 @@ public partial class FreecamWindow : Window
     private string? _exportPath;
     private int _exportSequence;
     private bool _hasHorizontalDiscovery;
+    private int _candidateMonitorSamples;
+    private readonly DispatcherTimer _phaseTimer;
+    private bool _phaseEnabled;
+    private bool _phaseBusy;
 
     [DllImport("user32.dll")]
     private static extern bool SetForegroundWindow(nint hWnd);
@@ -34,6 +41,13 @@ public partial class FreecamWindow : Window
     {
         InitializeComponent();
         _session = session;
+        _candidateMonitor = new DispatcherTimer(DispatcherPriority.Background)
+        {
+            Interval = TimeSpan.FromMilliseconds(250)
+        };
+        _candidateMonitor.Tick += CandidateMonitor_Tick;
+        _phaseTimer = new DispatcherTimer(DispatcherPriority.Background) { Interval = TimeSpan.FromMilliseconds(140) };
+        _phaseTimer.Tick += PhaseTimer_Tick;
         StatusText.Text = session.IsAttached
             ? $"Attached to PID {session.ProcessId}. Research CSV: {session.ResearchLogPath}"
             : $"Attach to the running game before calibration. Research CSV: {session.ResearchLogPath}";
@@ -72,7 +86,7 @@ public partial class FreecamWindow : Window
         { existing.Show(); existing.Activate(); return; }
         var window = new FreecamWindow(session) { Owner = owner };
         OpenWindows[session] = new(window);
-        window.Closed += (_, _) => { window._armingCancellation?.Cancel(); window._calibrationCancellation?.Cancel(); window._scanner?.Close(); OpenWindows.Remove(session); };
+        window.Closed += (_, _) => { window._phaseEnabled = false; window._phaseTimer.Stop(); window._armingCancellation?.Cancel(); window._calibrationCancellation?.Cancel(); window.StopCandidateMonitor(updateUi: false); window._scanner?.Close(); OpenWindows.Remove(session); };
         window.Show();
     }
 
@@ -89,6 +103,78 @@ public partial class FreecamWindow : Window
         _session.ReportMemoryScan("VERY EXPERIMENTAL: Freecam camera-calibration scanner opened; movement controls remain locked.");
     }
 
+    private void PhaseSafe_Click(object sender, RoutedEventArgs e)
+    {
+        try { _session.SaveTeleportPosition(); PhaseStatusText.Text = "Safe location saved. You can use Emergency return if movement goes wrong."; }
+        catch (Exception ex) { PhaseStatusText.Text = _session.ReportError("WDL-PHASE-001", "Safe location could not be saved", ex); }
+    }
+
+    private void PhaseReturn_Click(object sender, RoutedEventArgs e)
+    {
+        try { _phaseEnabled = false; _phaseTimer.Stop(); _session.ReturnToSafeTeleportPosition(); PhaseStatusText.Text = "Returned to the last safe location."; }
+        catch (Exception ex) { PhaseStatusText.Text = _session.ReportError("WDL-PHASE-002", "Emergency return failed", ex); }
+    }
+
+    private void PhaseFly_Click(object sender, RoutedEventArgs e)
+    {
+        if (!_session.IsAttached) { PhaseStatusText.Text = "Attach to the game first."; return; }
+        try
+        {
+            if (!_phaseEnabled)
+            {
+                _session.SaveTeleportPosition();
+                _session.PrepareFreecamRuntime();
+                _phaseEnabled = true;
+                _phaseTimer.Start();
+                PhaseFlyButton.Content = "Disable phase fly";
+                PhaseStatusText.Text = "Phase fly enabled. W/A/S/D, Space/Ctrl; Shift uses the configured multiplier. Escape disables.";
+                _session.ReportMemoryScan("VERY EXPERIMENTAL: phase-fly movement enabled; operative coordinates are being teleported, not a detached camera.");
+            }
+            else
+            {
+                _phaseEnabled = false; _phaseTimer.Stop(); PhaseFlyButton.Content = "Enable phase fly";
+                PhaseStatusText.Text = "Phase fly disabled; normal gameplay camera restored.";
+            }
+        }
+        catch (Exception ex) { PhaseStatusText.Text = _session.ReportError("WDL-PHASE-003", "Phase fly could not start", ex); }
+    }
+
+    private void PhaseProbe_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var rows = _session.ProbeFreecamApis();
+            PhaseStatusText.Text = string.Join("  |  ", rows.Select(r => $"{r.Name}={r.LuaType}"));
+        }
+        catch (Exception ex) { PhaseStatusText.Text = _session.ReportError("WDL-PHASE-004", "Freecam API probe failed", ex); }
+    }
+
+    private async void PhaseTimer_Tick(object? sender, EventArgs e)
+    {
+        if (!_phaseEnabled || _phaseBusy || !_session.IsAttached) return;
+        if (Keyboard.IsKeyDown(Key.Escape)) { _phaseEnabled = false; _phaseTimer.Stop(); PhaseFlyButton.Content = "Enable phase fly"; PhaseStatusText.Text = "Phase fly disabled by Escape."; return; }
+        float step = ParsePhaseValue(PhaseStepBox.Text, 2f, 0.05f, 25f);
+        float multiplier = ParsePhaseValue(PhaseShiftBox.Text, 2f, 1f, 10f);
+        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)) step *= multiplier;
+        try
+        {
+            _phaseBusy = true;
+            string? result = null;
+            if (Keyboard.IsKeyDown(Key.W)) result = await Task.Run(() => TeleportFeatureBridge.MoveForward(_session, step));
+            else if (Keyboard.IsKeyDown(Key.S)) result = await Task.Run(() => TeleportFeatureBridge.MoveForward(_session, -step));
+            else if (Keyboard.IsKeyDown(Key.A)) result = await Task.Run(() => TeleportFeatureBridge.MoveSideways(_session, -step));
+            else if (Keyboard.IsKeyDown(Key.D)) result = await Task.Run(() => TeleportFeatureBridge.MoveSideways(_session, step));
+            else if (Keyboard.IsKeyDown(Key.Space)) result = await Task.Run(() => TeleportFeatureBridge.MoveVertical(_session, step));
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) result = await Task.Run(() => TeleportFeatureBridge.MoveVertical(_session, -step));
+            if (result is not null) PhaseStatusText.Text = result;
+        }
+        catch (Exception ex) { PhaseStatusText.Text = _session.ReportError("WDL-PHASE-005", "Phase fly movement stopped", ex); }
+        finally { _phaseBusy = false; }
+    }
+
+    private static float ParsePhaseValue(string text, float fallback, float min, float max)
+        => float.TryParse(text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float value) && value >= min && value <= max ? value : fallback;
+
     private void CopyChecklist_Click(object sender, RoutedEventArgs e)
     {
         Clipboard.SetText("Freecam calibration: Float / WritableMemory -> Unknown first scan -> rotate camera only -> Changed -> stop -> Unchanged -> repeat horizontal and vertical movement. Do not write until an adjacent camera transform is validated.");
@@ -101,10 +187,12 @@ public partial class FreecamWindow : Window
         if (_busy) return;
         _cameraScanner = _session.CreateCameraMotionScanner();
         _hasHorizontalDiscovery = false;
+        StopCandidateMonitor();
         await RunAsync(async token =>
         {
             _exportSequence = 0;
             Dispatcher.Invoke(() => CandidateText.Text = "Ready. Run Horizontal discovery once; Vertical filter will unlock afterward.");
+            CandidateInspectorText.Text = "No candidates inspected yet.";
             SetStatus("Calibration reset. Run Full-memory horizontal discovery next.", 100);
             await Task.CompletedTask;
         });
@@ -213,6 +301,89 @@ public partial class FreecamWindow : Window
         await RunMotionPassAsync("vertical", "tilt upward or downward continuously");
     }
 
+    private void InspectCandidates_Click(object sender, RoutedEventArgs e)
+    {
+        if (_cameraScanner is null || _cameraScanner.Count == 0)
+        {
+            CandidateInspectorText.Text = "No surviving candidates. Run a gameplay-camera scan first.";
+            return;
+        }
+        try
+        {
+            RenderCandidateInspection(liveSample: false);
+            _session.WriteResearchLog("FreecamValidation", "Inspected nearby fields around surviving camera candidates; no memory was written.", "Inspect", candidates: _cameraScanner.Count);
+            _session.ReportMemoryScan($"Read-only gameplay-camera candidate inspection completed for {_cameraScanner.Count:N0} surviving fields.");
+        }
+        catch (Exception ex) { CandidateInspectorText.Text = _session.ReportError("WDL-FREECAM-003", "Candidate inspection failed", ex); }
+    }
+
+    private void StartLiveMonitor_Click(object sender, RoutedEventArgs e)
+    {
+        CameraMotionScanner? cameraScanner = _cameraScanner;
+        if (cameraScanner is null || cameraScanner.Count == 0)
+        {
+            CandidateInspectorText.Text = "No surviving candidates. Run a gameplay-camera scan first.";
+            return;
+        }
+
+        _candidateMonitorSamples = 0;
+        try
+        {
+            _candidateMonitorSamples = 1;
+            RenderCandidateInspection(liveSample: true);
+        }
+        catch (Exception ex)
+        {
+            CandidateInspectorText.Text = _session.ReportError("WDL-FREECAM-004", "Live candidate monitor could not start", ex);
+            return;
+        }
+        _candidateMonitor.Start();
+        SetButtons(_cameraScanner is not null);
+        StatusText.Text = "Live candidate monitor started (read-only, four samples per second).";
+        _session.WriteResearchLog("FreecamValidation", "Started live read-only monitoring of surviving camera candidates.", "MonitorStart", candidates: cameraScanner.Count);
+    }
+
+    private void StopLiveMonitor_Click(object sender, RoutedEventArgs e) => StopCandidateMonitor(message: "Live candidate monitor stopped.");
+
+    private void CandidateMonitor_Tick(object? sender, EventArgs e)
+    {
+        if (_busy || _cameraScanner is null || _cameraScanner.Count == 0 || !_session.IsAttached)
+        {
+            StopCandidateMonitor(message: "Live candidate monitor stopped because the scan or game connection is no longer available.");
+            return;
+        }
+
+        try
+        {
+            _candidateMonitorSamples++;
+            RenderCandidateInspection(liveSample: true);
+        }
+        catch (Exception ex)
+        {
+            _candidateMonitor.Stop();
+            CandidateInspectorText.Text = _session.ReportError("WDL-FREECAM-004", "Live candidate monitor stopped", ex);
+            SetButtons(_cameraScanner is not null);
+        }
+    }
+
+    private void RenderCandidateInspection(bool liveSample)
+    {
+        if (_cameraScanner is null) return;
+        string prefix = liveSample
+            ? $"Live read-only sample {_candidateMonitorSamples:N0} — no game memory is written.\n\n"
+            : "Read-only snapshot — no game memory is written.\n\n";
+        CandidateInspectorText.Text = prefix + _cameraScanner.DescribeCandidateClusters();
+    }
+
+    private void StopCandidateMonitor(bool updateUi = true, string? message = null)
+    {
+        bool wasRunning = _candidateMonitor.IsEnabled;
+        _candidateMonitor.Stop();
+        if (message is not null) StatusText.Text = message;
+        if (wasRunning) _session.WriteResearchLog("FreecamValidation", "Stopped live read-only monitoring of camera candidates.", "MonitorStop", candidates: _cameraScanner?.Count);
+        if (updateUi && IsLoaded) SetButtons(_cameraScanner is not null);
+    }
+
     private async Task RunMotionPassAsync(string label, string instruction, bool countdown = true)
     {
         if (_cameraScanner is null || _busy) return;
@@ -315,6 +486,9 @@ public partial class FreecamWindow : Window
             HorizontalButton.IsEnabled = !_busy && !_armed && hasCalibration;
             VerticalButton.IsEnabled = !_busy && !_armed && hasCalibration && _hasHorizontalDiscovery;
             CancelCalibrationButton.IsEnabled = _busy;
+            InspectCandidatesButton.IsEnabled = !_busy && hasCalibration && _cameraScanner?.Count > 0;
+            StartLiveMonitorButton.IsEnabled = !_busy && hasCalibration && _cameraScanner?.Count > 0 && !_candidateMonitor.IsEnabled;
+            StopLiveMonitorButton.IsEnabled = _candidateMonitor.IsEnabled;
         });
     }
 
