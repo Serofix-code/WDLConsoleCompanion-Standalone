@@ -3,13 +3,16 @@
   <Grid Margin="16"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
     <StackPanel Margin="0,0,0,12">
       <TextBlock Text="OPERATIVE ACCENT EDITOR" FontSize="21" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}"/>
-      <TextBlock Text="Accent is represented by the operative voice-profile value. Choose a readable profile, then save only after backing up your save." Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/>
+      <TextBlock Text="Choose the voice/persona source that controls the operative's spoken style. The game stores country/cultural birthplace separately in Recent Events; there is no independently verified country-accent field, so each candidate is labeled explicitly." Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/>
       <Border Background="#3B2026" BorderBrush="#B64C5D" BorderThickness="1" CornerRadius="5" Padding="8" Margin="0,8,0,0"><TextBlock Text="HIGH RISK — changing a profile can affect voice, accent, and animation bindings. The write is validated and rolled back if verification fails." Foreground="#FF9AA8" TextWrapping="Wrap"/></Border>
     </StackPanel>
     <Grid Grid.Row="1"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition/></Grid.RowDefinitions>
-      <TextBlock Text="Current profile" FontWeight="SemiBold" Margin="0,0,0,4"/>
+      <TextBlock Text="Voice/accent source" FontWeight="SemiBold" Margin="0,0,0,4"/>
       <TextBlock x:Name="CurrentText" Grid.Row="1" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"/>
-      <ComboBox x:Name="AccentBox" Grid.Row="2" Margin="0,14,0,0" ItemsSource="{Binding}" DisplayMemberPath="Display" SelectedValuePath="Value" IsTextSearchEnabled="True" TextSearch.TextPath="Display" MaxDropDownHeight="300" Background="{DynamicResource InputBrush}" Foreground="{DynamicResource InputTextBrush}"/>
+      <Grid Grid.Row="2" Margin="0,14,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="230"/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+        <ComboBox x:Name="SourceBox" DisplayMemberPath="DisplayName" SelectionChanged="Source_SelectionChanged" IsTextSearchEnabled="True" MaxDropDownHeight="220" Background="{DynamicResource InputBrush}" Foreground="{DynamicResource InputTextBrush}"/>
+        <ComboBox x:Name="AccentBox" Grid.Column="2" DisplayMemberPath="Display" SelectedValuePath="Value" IsTextSearchEnabled="True" TextSearch.TextPath="Display" MaxDropDownHeight="300" Background="{DynamicResource InputBrush}" Foreground="{DynamicResource InputTextBrush}"/>
+      </Grid>
     </Grid>
     <DockPanel Grid.Row="2" Margin="0,14,0,0"><TextBlock x:Name="Footer" Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" TextWrapping="Wrap"/><StackPanel Orientation="Horizontal" DockPanel.Dock="Right"><Button Content="Refresh" Click="Refresh_Click"/><Button Content="Save accent (high risk)" Background="#4A202A" BorderBrush="#B64C5D" Click="Save_Click"/></StackPanel></DockPanel>
   </Grid>
