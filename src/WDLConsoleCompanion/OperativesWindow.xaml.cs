@@ -95,6 +95,7 @@ public partial class OperativesWindow : Window
         catch (Exception ex) { string error = _session.ReportError("WDL-EVENT-000", "Recent Events editor could not be opened", ex); MessageBox.Show(error, "Recent Events stopped", MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
     private void Appearance_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new AppearanceWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
+    private void Accent_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new AccentWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
     private void Contracts_Click(object sender, RoutedEventArgs e) { if (RosterGrid.SelectedItem is OperativeRecord row) new ContractsWindow(_session, row) { Owner = this }.Show(); else MessageBox.Show("Select an operative first."); }
     private void SetBusy(bool busy, string? text = null) { RosterGrid.IsEnabled = !busy; if (text is not null) Footer.Text = text; }
 }

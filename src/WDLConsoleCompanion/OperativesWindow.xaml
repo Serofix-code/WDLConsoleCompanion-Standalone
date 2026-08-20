@@ -12,6 +12,7 @@
         <Button Content="Statistics" Click="Statistics_Click"/>
         <Button Content="Recent events / city" Click="Events_Click"/>
         <Button Content="Appearance studio" Background="#4A202A" BorderBrush="#B64C5D" Click="Appearance_Click"/>
+        <Button Content="Accent editor" Background="#4A202A" BorderBrush="#B64C5D" Click="Accent_Click"/>
         <Button Content="Advanced metadata" Background="#4A3020" BorderBrush="#D8843E" Click="Advanced_Click"/>
         <Button Content="Contacts" Click="Contracts_Click"/>
         <Button Content="Remove" Background="#402029" BorderBrush="#7A3342" Click="Remove_Click"/>
